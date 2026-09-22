@@ -1,0 +1,204 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-09-22",
+  "scripts": [
+    {
+      "id": "m1l4-checkpoint",
+      "module": 1,
+      "lesson": 4,
+      "lessonTitle": "Mejorando nuestros videojuegos de plataforma",
+      "name": "Punto de control (Checkpoint)",
+      "description": "Guarda la posición del jugador al tocar esta parte; si el jugador muere, reaparece en el último checkpoint tocado en vez de en el spawn inicial.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "Checkpoint",
+      "file": "scripts/m1l4/checkpoint.lua",
+      "requiredObjects": [
+        "Selecciona (o crea) la Part que quieras usar como punto de control antes de insertar este script."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l5-botones-interactivos",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Botones interactivos (Material, Color, Transparencia)",
+      "description": "Al tocar cada uno de 3 botones, cambia su Material, su color (BrickColor) y, en el primero, su transparencia.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "BotonesInteractivos",
+      "file": "scripts/m1l5/botones-interactivos.lua",
+      "requiredObjects": [
+        "Crea 3 Parts en Workspace y renómbralas exactamente: Button1, Button2, Button3."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l5-dynamite",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Dynamite (peligro que destruye al personaje)",
+      "description": "Al tocar la Part Dynamite, el personaje muere instantáneamente (Humanoid.Health = 0).",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "Dynamite",
+      "file": "scripts/m1l5/dynamite.lua",
+      "requiredObjects": [
+        "Crea una Part en Workspace y renómbrala exactamente: Dynamite."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l7-ciclo-dia-noche",
+      "module": 1,
+      "lesson": 7,
+      "lessonTitle": "Creando un mundo propio: edificios",
+      "name": "Ciclo día/noche",
+      "description": "Hace avanzar Lighting.ClockTime indefinidamente, generando un ciclo día/noche continuo.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "CicloDiaNoche",
+      "file": "scripts/m1l7/ciclo-dia-noche.lua",
+      "requiredObjects": [],
+      "conflictsWith": ["m1l7-luz-de-calle-nocturna"],
+      "notes": "No lo insertes junto con 'Luz de calle automática': ambos controlan Lighting.ClockTime y competirían entre sí.",
+      "tested": false
+    },
+    {
+      "id": "m1l7-parpadeo-de-luces",
+      "module": 1,
+      "lesson": 7,
+      "lessonTitle": "Creando un mundo propio: edificios",
+      "name": "Parpadeo de tres luces",
+      "description": "Apaga y enciende, sincronizadas cada segundo, tres fuentes de luz (PointLight, SpotLight, SurfaceLight).",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "ParpadeoDeLuces",
+      "file": "scripts/m1l7/parpadeo-de-luces.lua",
+      "requiredObjects": [
+        "Crea 3 Parts en Workspace nombradas Part1, Part2, Part3.",
+        "Añade un PointLight a Part1, un SpotLight a Part2 y un SurfaceLight a Part3 (pestaña Model > Lighting)."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l7-luz-de-calle-nocturna",
+      "module": 1,
+      "lesson": 7,
+      "lessonTitle": "Creando un mundo propio: edificios",
+      "name": "Luz de calle automática (según la hora)",
+      "description": "Incluye su propio ciclo día/noche y enciende una farola (SpotLight) entre las 16:00 y las 6:00.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "LuzDeCalleNocturna",
+      "file": "scripts/m1l7/luz-de-calle-nocturna.lua",
+      "requiredObjects": [
+        "Construye una farola (Block + Cylinder + Sphere) y añade un SpotLight a la esfera.",
+        "Renombra la Part de la esfera exactamente: Sphere."
+      ],
+      "conflictsWith": ["m1l7-ciclo-dia-noche"],
+      "notes": "No lo insertes junto con 'Ciclo día/noche': este script ya incluye su propio ciclo de ClockTime.",
+      "tested": false
+    },
+    {
+      "id": "m1l9-fuego-por-tiempo",
+      "module": 1,
+      "lesson": 9,
+      "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
+      "name": "Fuego intermitente por tiempo",
+      "description": "Enciende el fuego de una antorcha 3 segundos y lo apaga 2 segundos, en bucle.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "FuegoPorTiempo",
+      "file": "scripts/m1l9/fuego-por-tiempo.lua",
+      "requiredObjects": [
+        "Crea una Part en Workspace llamada Torch, con un efecto Fire como hijo (pestaña Model > Effects > Fire)."
+      ],
+      "conflictsWith": ["m1l9-fuego-al-acercarse", "m1l9-fuego-al-acercarse-y-alejarse"],
+      "tested": false
+    },
+    {
+      "id": "m1l9-fuego-al-acercarse",
+      "module": 1,
+      "lesson": 9,
+      "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
+      "name": "Fuego que se enciende al acercarse",
+      "description": "Enciende el fuego cuando el jugador toca una zona de detección. Nunca se apaga (versión intermedia de la lección).",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "FuegoAlAcercarse",
+      "file": "scripts/m1l9/fuego-al-acercarse.lua",
+      "requiredObjects": [
+        "Crea una Part transparente y anclada en Workspace llamada Area.",
+        "Crea una Part en Workspace llamada Torch, con un efecto Fire como hijo."
+      ],
+      "conflictsWith": ["m1l9-fuego-por-tiempo", "m1l9-fuego-al-acercarse-y-alejarse"],
+      "notes": "Considera usar 'Fuego que se enciende y apaga según proximidad' en su lugar, que es la versión completa de esta misma idea.",
+      "tested": false
+    },
+    {
+      "id": "m1l9-fuego-al-acercarse-y-alejarse",
+      "module": 1,
+      "lesson": 9,
+      "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
+      "name": "Fuego que se enciende y apaga según proximidad",
+      "description": "Enciende el fuego cuando el jugador toca una zona de detección, y lo apaga (con 3 segundos de retraso) al alejarse.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "FuegoAlAcercarseYAlejarse",
+      "file": "scripts/m1l9/fuego-al-acercarse-y-alejarse.lua",
+      "requiredObjects": [
+        "Crea una Part transparente y anclada en Workspace llamada Area.",
+        "Crea una Part en Workspace llamada Torch, con un efecto Fire como hijo."
+      ],
+      "conflictsWith": ["m1l9-fuego-por-tiempo", "m1l9-fuego-al-acercarse"],
+      "tested": false
+    },
+    {
+      "id": "m1l9-dano-por-fuego",
+      "module": 1,
+      "lesson": 9,
+      "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
+      "name": "Daño por fuego (antorcha peligrosa)",
+      "description": "Quita 20 de salud al jugador que toca la antorcha, siempre que esta tenga un efecto Fire como hijo (con un breve cooldown).",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "DanoPorFuego",
+      "file": "scripts/m1l9/dano-por-fuego.lua",
+      "requiredObjects": [
+        "Selecciona la Part de la antorcha (con su efecto Fire) antes de insertar este script."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l9-aparicion-de-objeto",
+      "module": 1,
+      "lesson": 9,
+      "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
+      "name": "Aparición de un objeto al tocar una Part",
+      "description": "Esconde un Model al iniciar el juego y lo hace reaparecer cuando el jugador toca una Part disparadora.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "AparicionDeObjeto",
+      "file": "scripts/m1l9/aparicion-de-objeto.lua",
+      "requiredObjects": [
+        "Inserta un Model en Workspace (por ejemplo desde el Toolbox) y renómbralo: SorpresaModel.",
+        "Crea una Part disparadora en Workspace y renómbrala: SorpresaTrigger."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l9-destruccion-de-objeto",
+      "module": 1,
+      "lesson": 9,
+      "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
+      "name": "Desaparición (destrucción) de una Part al tocarla",
+      "description": "Destruye permanentemente una Part cuando el jugador la toca.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "DestruccionDeObjeto",
+      "file": "scripts/m1l9/destruccion-de-objeto.lua",
+      "requiredObjects": [
+        "Crea una Part en Workspace y renómbrala exactamente: SorpresaFragil."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    }
+  ]
+}
