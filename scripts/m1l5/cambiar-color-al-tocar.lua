@@ -15,6 +15,10 @@
 -- Nota: solo reacciona si lo que la toca es un personaje (tiene un
 -- Humanoid) — así no se activa por accidente al tocar el suelo u otra
 -- Part cuando empieza la partida.
+--
+-- Para experimentar: prueba otros valores de NUEVO_COLOR, o combínalo
+-- con Material (por ejemplo Enum.Material.Neon) para que el color
+-- resalte más.
 
 local NUEVO_COLOR = BrickColor.new("Lime green")
 

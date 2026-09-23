@@ -17,6 +17,9 @@
 -- intermedia tal como aparece en la lección — para el comportamiento
 -- completo (se apaga al alejarse), usa
 -- "fuego-al-acercarse-y-alejarse.lua" en su lugar.
+--
+-- Para experimentar: en las propiedades del Fire prueba Size, Heat y
+-- Color para que la llama se vea distinta.
 
 local Workspace = game:GetService("Workspace")
 
@@ -32,5 +35,5 @@ local function onAreaTouched(hit)
 	end
 end
 
-local area = Workspace:WaitForChild("Area")
+local area = Workspace.Area
 area.Touched:Connect(onAreaTouched)

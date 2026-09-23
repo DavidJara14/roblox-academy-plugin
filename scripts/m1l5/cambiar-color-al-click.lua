@@ -9,11 +9,15 @@
 -- 3. Dale a Play y haz clic con el mouse sobre la Part.
 --
 -- Qué hace: al hacer clic en la Part, cambia su color (BrickColor).
+--
+-- Para experimentar: prueba otros valores de NUEVO_COLOR, o cambia la
+-- propiedad MaxActivationDistance del ClickDetector para que se pueda
+-- activar desde más o menos lejos.
 
 local NUEVO_COLOR = BrickColor.new("Lime green")
 
 local boton = script.Parent
-local clickDetector = boton:WaitForChild("ClickDetector")
+local clickDetector = boton.ClickDetector
 
 local function onBotonClicado()
 	boton.BrickColor = NUEVO_COLOR

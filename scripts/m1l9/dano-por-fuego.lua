@@ -15,6 +15,8 @@
 -- fuego-al-acercarse-y-alejarse.lua), la antorcha seguirá haciendo daño
 -- incluso con la llama visualmente apagada. Si prefieres que el daño
 -- dependa también de Fire.Enabled, cambia la condición de más abajo.
+--
+-- Para experimentar: cambia DANO o SEGUNDOS_DE_COOLDOWN.
 
 local torchPart = script.Parent
 

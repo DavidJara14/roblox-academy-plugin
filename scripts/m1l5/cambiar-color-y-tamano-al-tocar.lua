@@ -11,9 +11,18 @@
 --
 -- Nota: solo reacciona si lo que la toca es un personaje (tiene un
 -- Humanoid).
+--
+-- Tamaño recomendado para la Part antes de insertar: (5, 1, 5), anclada
+-- y apoyada justo encima de una superficie (para que se note el efecto
+-- de "hundirse"). El eje Y es la altura en Roblox — por eso es el que
+-- se reduce.
+--
+-- Para experimentar: prueba otro NUEVO_COLOR, o cambia cuánto se reduce
+-- la altura (el "5" en NUEVO_TAMANO) para que el botón se hunda más o
+-- menos.
 
 local NUEVO_COLOR = BrickColor.new(Color3.fromRGB(255, 255, 0))
-local NUEVO_TAMANO = Vector3.new(0.1, 5, 5)
+local NUEVO_TAMANO = Vector3.new(5, 0.1, 5)
 
 local boton = script.Parent
 

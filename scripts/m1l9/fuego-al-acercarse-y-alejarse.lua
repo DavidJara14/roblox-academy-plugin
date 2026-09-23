@@ -12,6 +12,9 @@
 --
 -- Nota: solo reacciona si lo que toca/deja de tocar Area es un
 -- personaje (tiene un Humanoid).
+--
+-- Para experimentar: cambia SEGUNDOS_ANTES_DE_APAGAR, o en las
+-- propiedades del Fire prueba Size, Heat y Color.
 
 local Workspace = game:GetService("Workspace")
 
@@ -48,6 +51,6 @@ local function onAreaTouchEnded(hit)
 	end
 end
 
-local area = Workspace:WaitForChild("Area")
+local area = Workspace.Area
 area.Touched:Connect(onAreaTouched)
 area.TouchEnded:Connect(onAreaTouchEnded)

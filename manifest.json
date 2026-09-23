@@ -1,5 +1,5 @@
 {
-  "version": "5.0.0",
+  "version": "5.1.0",
   "updatedAt": "2026-09-23",
   "scripts": [
     {
@@ -77,7 +77,8 @@
       "scriptInstanceName": "CambiarColorYTamanoAlTocar",
       "file": "scripts/m1l5/cambiar-color-y-tamano-al-tocar.lua",
       "requiredObjects": [
-        "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
+        "Selecciona la Part a la que quieras darle este comportamiento antes de insertar.",
+        "Tamaño recomendado: (5, 1, 5), anclada, apoyada justo encima de una superficie."
       ],
       "conflictsWith": [],
       "tested": false
@@ -88,32 +89,32 @@
       "lesson": 5,
       "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
       "name": "Emitir partículas al tocar",
-      "description": "Al tocar esta Part, activa un efecto Sparkles que queda brillando de forma permanente.",
+      "description": "Al tocar esta Part, activa un efecto ParticleEmitter que queda brillando de forma permanente.",
       "targetParent": "SelectedPart",
       "scriptInstanceName": "EmitirParticulasAlTocar",
       "file": "scripts/m1l5/emitir-particulas-al-tocar.lua",
       "requiredObjects": [
-        "Añade un efecto Sparkles como hijo de la Part (Model > Effects > Sparkles).",
+        "Añade un efecto ParticleEmitter como hijo de la Part (Model > Effects > ParticleEmitter).",
         "Selecciona esa misma Part antes de insertar el script."
       ],
       "conflictsWith": [],
       "tested": false
     },
     {
-      "id": "m1l5-trampa-mortal",
+      "id": "m1l5-insta-kill",
       "module": 1,
       "lesson": 5,
       "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
-      "name": "Trampa mortal",
+      "name": "InstaKill",
       "description": "Al tocar esta Part, el personaje muere al instante (Humanoid.Health = 0). Sin efecto visual de explosión. Funciona con cualquier Part.",
       "targetParent": "SelectedPart",
-      "scriptInstanceName": "TrampaMortal",
-      "file": "scripts/m1l5/trampa-mortal.lua",
+      "scriptInstanceName": "InstaKill",
+      "file": "scripts/m1l5/insta-kill.lua",
       "requiredObjects": [
         "Selecciona la Part que quieras convertir en trampa antes de insertar."
       ],
       "conflictsWith": [],
-      "notes": "Antes se llamaba 'Dynamite'; se renombró porque el comportamiento actual no incluye ningún efecto de explosión, solo mata al personaje.",
+      "notes": "",
       "tested": false
     },
     {
@@ -191,12 +192,13 @@
       "lessonTitle": "Creando un mundo propio: edificios",
       "name": "Parpadeo de tres luces",
       "description": "Apaga y enciende, sincronizadas cada segundo, tres fuentes de luz (PointLight, SpotLight, SurfaceLight).",
-      "targetParent": "Workspace",
+      "targetParent": "SelectedPart",
       "scriptInstanceName": "ParpadeoDeLuces",
       "file": "scripts/m1l7/parpadeo-de-luces.lua",
       "requiredObjects": [
-        "Crea 3 Parts en Workspace nombradas Part1, Part2, Part3.",
-        "Añade un PointLight a Part1, un SpotLight a Part2 y un SurfaceLight a Part3 (pestaña Model > Lighting)."
+        "Crea 3 Parts nombradas exactamente Part1, Part2, Part3 dentro de un Model/Folder que las agrupe.",
+        "Añade un PointLight a Part1, un SpotLight a Part2 y un SurfaceLight a Part3 (pestaña Model > Lighting).",
+        "Selecciona el Model/Folder que agrupa las 3 Parts antes de insertar."
       ],
       "conflictsWith": [],
       "tested": false
@@ -208,12 +210,13 @@
       "lessonTitle": "Creando un mundo propio: edificios",
       "name": "Luz de calle automática (según la hora)",
       "description": "Incluye su propio ciclo día/noche y enciende una farola (SpotLight) entre las 16:00 y las 6:00.",
-      "targetParent": "Workspace",
+      "targetParent": "SelectedPart",
       "scriptInstanceName": "LuzDeCalleNocturna",
       "file": "scripts/m1l7/luz-de-calle-nocturna.lua",
       "requiredObjects": [
-        "Construye una farola (Block + Cylinder + Sphere) y añade un SpotLight a la esfera.",
-        "Renombra la Part de la esfera exactamente: Sphere."
+        "Construye una farola (Block + Cylinder + Sphere) dentro de un Model/Folder que las agrupe.",
+        "La Part de la esfera debe llamarse exactamente 'Sphere', con un SpotLight dentro.",
+        "Selecciona el Model/Folder que agrupa la farola (no la Sphere directamente) antes de insertar."
       ],
       "conflictsWith": [
         "m1l7-ciclo-dia-noche"

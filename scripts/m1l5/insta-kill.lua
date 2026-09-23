@@ -1,4 +1,4 @@
--- Trampa mortal (Part que mata al tocarla) — Módulo 1, Lección 5
+-- InstaKill (Part que mata al tocarla) — Módulo 1, Lección 5
 --
 -- Ubicación: dentro de la Part que quieras convertir en trampa (usa
 -- script.Parent). Funciona con cualquier Part.
@@ -7,8 +7,11 @@
 -- Humanoid.Health se pone en 0 y muere al instante.
 --
 -- Nota: no hay ningún efecto visual de explosión — el personaje muere
--- de forma "silenciosa" (no se desarma ni desaparece), por eso el
--- script ya no se llama "Dynamite" como en la diapositiva original.
+-- de forma "silenciosa" (no se desarma ni desaparece).
+--
+-- Para experimentar: en vez de matar de golpe, prueba restar solo una
+-- parte de la salud (por ejemplo humanoid.Health -= 20) para convertirla
+-- en una trampa que solo hace daño.
 
 local trampa = script.Parent
 

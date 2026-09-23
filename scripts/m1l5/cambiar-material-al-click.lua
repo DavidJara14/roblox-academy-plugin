@@ -16,11 +16,15 @@
 -- es un personaje, porque un ClickDetector solo se activa con un clic
 -- de mouse de un jugador real — nunca por contacto físico con el suelo
 -- u otra Part.
+--
+-- Para experimentar: prueba otros materiales (Enum.Material.Ice,
+-- Enum.Material.Wood...) o la propiedad MaxActivationDistance del
+-- ClickDetector.
 
 local NUEVO_MATERIAL = Enum.Material.Neon
 
 local boton = script.Parent
-local clickDetector = boton:WaitForChild("ClickDetector")
+local clickDetector = boton.ClickDetector
 
 local function onBotonClicado()
 	boton.Material = NUEVO_MATERIAL

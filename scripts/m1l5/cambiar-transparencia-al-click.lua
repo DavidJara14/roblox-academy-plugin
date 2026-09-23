@@ -10,11 +10,14 @@
 --
 -- Qué hace: al hacer clic en la Part, cambia su Transparency
 -- (0 = opaco, 1 = invisible).
+--
+-- Para experimentar: prueba NUEVA_TRANSPARENCIA = 1, o la propiedad
+-- MaxActivationDistance del ClickDetector.
 
 local NUEVA_TRANSPARENCIA = 0.5
 
 local boton = script.Parent
-local clickDetector = boton:WaitForChild("ClickDetector")
+local clickDetector = boton.ClickDetector
 
 local function onBotonClicado()
 	boton.Transparency = NUEVA_TRANSPARENCIA

@@ -11,6 +11,9 @@
 -- Nota: solo reacciona si lo que la toca es un personaje (tiene un
 -- Humanoid) — así no se activa por accidente al tocar el suelo u otra
 -- Part cuando empieza la partida.
+--
+-- Para experimentar: prueba otros materiales, por ejemplo
+-- Enum.Material.Ice, Enum.Material.Wood o Enum.Material.ForceField.
 
 local NUEVO_MATERIAL = Enum.Material.Neon
 

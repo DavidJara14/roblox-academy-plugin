@@ -1,10 +1,8 @@
 -- Luz de calle automática (según la hora) — Módulo 1, Lección 7
 --
--- Ubicación: script independiente en Workspace (controla Lighting
--- globalmente además de la farola, así que no vive dentro de ella).
--- Requisito: una Part en Workspace nombrada exactamente Sphere, con un
--- SpotLight como hijo (la farola construida en la lección: Block +
--- Cylinder + Sphere, con el SpotLight adjunto a la esfera).
+-- Ubicación: dentro del contenedor de la farola (usa script.Parent),
+-- que debe tener una Part llamada exactamente "Sphere" como hijo
+-- directo, con un SpotLight dentro de esa Sphere.
 --
 -- Qué hace: incluye su propio ciclo día/noche (igual que
 -- "ciclo-dia-noche.lua") y además enciende el SpotLight de la farola
@@ -13,15 +11,19 @@
 -- ⚠️ Este script YA INCLUYE el ciclo de ClockTime — no lo actives junto
 -- con "ciclo-dia-noche.lua" en el mismo lugar, o ambos competirán por
 -- la misma propiedad Lighting.ClockTime.
+--
+-- Para experimentar: cambia HORA_ENCENDIDO/HORA_APAGADO para que la luz
+-- se encienda en otro momento del día, o INCREMENTO_POR_TICK para que
+-- el ciclo sea más rápido o más lento. En las propiedades del SpotLight
+-- prueba también Brightness, Range y Color.
 
 local Lighting = game:GetService("Lighting")
-local Workspace = game:GetService("Workspace")
 
 local HORA_ENCENDIDO = 16
 local HORA_APAGADO = 6
-local INCREMENTO_POR_TICK = 0.01
+local INCREMENTO_POR_TICK = 0.1
 
-local spotLight = Workspace:WaitForChild("Sphere"):WaitForChild("SpotLight")
+local spotLight = script.Parent.Sphere.SpotLight
 
 local horaDelDia = 0
 

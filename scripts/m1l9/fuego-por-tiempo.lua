@@ -6,12 +6,15 @@
 --
 -- Qué hace: enciende el fuego 3 segundos, lo apaga 2 segundos, y repite
 -- indefinidamente.
+--
+-- Para experimentar: cambia SEGUNDOS_ENCENDIDO/SEGUNDOS_APAGADO, o en
+-- las propiedades del Fire prueba Size, Heat y Color.
 
 local SEGUNDOS_ENCENDIDO = 3
 local SEGUNDOS_APAGADO = 2
 
 local antorcha = script.Parent
-local fuego = antorcha:WaitForChild("Fire")
+local fuego = antorcha.Fire
 
 while true do
 	fuego.Enabled = true

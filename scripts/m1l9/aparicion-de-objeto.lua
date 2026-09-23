@@ -14,11 +14,15 @@
 --
 -- Nota: solo reacciona si lo que toca la Part disparadora es un
 -- personaje (tiene un Humanoid).
+--
+-- Para experimentar: prueba usar otro Model del Toolbox, o cambiar
+-- SorpresaTrigger de tamaño/forma para que el área de activación sea
+-- más grande o más chica.
 
 local ServerStorage = game:GetService("ServerStorage")
 local Workspace = game:GetService("Workspace")
 
-local modelo = Workspace:WaitForChild("SorpresaModel")
+local modelo = Workspace.SorpresaModel
 modelo.Parent = ServerStorage
 
 local function onTriggerTouched(hit)
@@ -31,5 +35,5 @@ local function onTriggerTouched(hit)
 	end
 end
 
-local trigger = Workspace:WaitForChild("SorpresaTrigger")
+local trigger = Workspace.SorpresaTrigger
 trigger.Touched:Connect(onTriggerTouched)

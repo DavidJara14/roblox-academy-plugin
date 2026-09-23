@@ -5,6 +5,9 @@
 --
 -- Qué hace: cuando el personaje de un jugador la toca, la Part se
 -- destruye permanentemente (no se puede revertir sin recrearla).
+--
+-- Para experimentar: antes de destruirla, prueba añadir un sonido o un
+-- efecto de partículas para que la desaparición se note más.
 
 local parte = script.Parent
 

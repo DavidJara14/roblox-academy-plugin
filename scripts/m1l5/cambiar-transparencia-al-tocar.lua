@@ -11,6 +11,10 @@
 -- Nota: solo reacciona si lo que la toca es un personaje (tiene un
 -- Humanoid) — así no se activa por accidente al tocar el suelo u otra
 -- Part cuando empieza la partida.
+--
+-- Para experimentar: prueba NUEVA_TRANSPARENCIA = 1 (invisible) y
+-- combínalo con CanCollide = false para hacer una Part que "desaparece"
+-- del todo al tocarla.
 
 local NUEVA_TRANSPARENCIA = 0.5
 

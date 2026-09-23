@@ -13,6 +13,10 @@
 -- Si además usas el script "luz-de-calle-nocturna.lua" (que ya incluye
 -- su propio ciclo de ClockTime), no actives los dos al mismo tiempo:
 -- competirían por la misma propiedad.
+--
+-- Para experimentar: en las propiedades de Lighting prueba también
+-- Brightness, Ambient y ColorShift_Top/Bottom para cambiar cómo se ve
+-- la luz durante el ciclo.
 
 local Lighting = game:GetService("Lighting")
 
