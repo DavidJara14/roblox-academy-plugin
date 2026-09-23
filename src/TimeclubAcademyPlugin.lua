@@ -1,5 +1,5 @@
 --[[
-	Timeclub Academy — Catálogo de Scripts (v1.1.0)
+	Timeclub Academy — Catálogo de Scripts (v1.3.0)
 
 	Plugin de Roblox Studio para el curso de diseño de videojuegos.
 
@@ -21,6 +21,9 @@
 	  Part a la que afectan (script.Parent), o como script independiente
 	  en Workspace cuando la mecánica no pertenece a un solo objeto
 	  (por ejemplo, un ciclo de día/noche).
+	- El panel agrupa el catálogo por Módulo y Lección, y cada encabezado
+	  se puede colapsar/expandir con un clic — así la lista no crece sin
+	  control a medida que se agregan más módulos.
 
 	Para actualizar la URL del repositorio, cambia REPO_RAW_BASE_URL.
 ]]
@@ -139,13 +142,43 @@ local function nextOrder()
 	return order
 end
 
+-------------------------------------------------
+-- Colapsar/expandir por módulo y por lección
+--
+-- El estado (qué está colapsado) se guarda en estas dos tablas a nivel
+-- de archivo, así que sobrevive a un "Sincronizar" (re-renderizar no
+-- reabre lo que el profesor ya cerró).
+-------------------------------------------------
+local collapsedModules = {} -- [moduleNumber] = true/false
+local collapsedLessons = {} -- ["module-lesson"] = true/false
+
+local lessonHeaderEntries = {} -- {instance=, moduleNumber=}
+local scriptRowEntries = {} -- {instance=, moduleNumber=, lessonNumber=}
+
+local function lessonKey(moduleNumber, lessonNumber)
+	return tostring(moduleNumber) .. "-" .. tostring(lessonNumber)
+end
+
+local function applyVisibility()
+	for _, section in lessonHeaderEntries do
+		section.instance.Visible = not collapsedModules[section.moduleNumber]
+	end
+	for _, row in scriptRowEntries do
+		local hiddenByModule = collapsedModules[row.moduleNumber]
+		local hiddenByLesson = collapsedLessons[lessonKey(row.moduleNumber, row.lessonNumber)]
+		row.instance.Visible = not (hiddenByModule or hiddenByLesson)
+	end
+end
+
 local function clearRows()
 	for _, child in root:GetChildren() do
-		if child:IsA("Frame") or child:IsA("TextLabel") then
+		if child:IsA("Frame") or child:IsA("TextLabel") or child:IsA("TextButton") then
 			child:Destroy()
 		end
 	end
 	order = 0
+	lessonHeaderEntries = {}
+	scriptRowEntries = {}
 end
 
 local function flashButton(button, text, duration)
@@ -158,7 +191,76 @@ local function flashButton(button, text, duration)
 	end)
 end
 
-local function sectionHeader(text)
+local function collapsibleHeader(config)
+	-- config: { text, backgroundColor, textSize, paddingLeft, isCollapsed, onToggle }
+	local button = Instance.new("TextButton")
+	button.Size = UDim2.new(1, 0, 0, 26)
+	button.BackgroundColor3 = config.backgroundColor
+	button.AutoButtonColor = false
+	button.Font = Enum.Font.SourceSansBold
+	button.TextSize = config.textSize
+	button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	button.TextXAlignment = Enum.TextXAlignment.Left
+	button.LayoutOrder = nextOrder()
+	button.Parent = root
+
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(0, 6)
+	corner.Parent = button
+
+	local padding = Instance.new("UIPadding")
+	padding.PaddingLeft = UDim.new(0, config.paddingLeft)
+	padding.Parent = button
+
+	local function refreshText()
+		local arrow = config.isCollapsed() and "▶" or "▼"
+		button.Text = arrow .. "  " .. config.text
+	end
+	refreshText()
+
+	button.MouseButton1Click:Connect(function()
+		config.onToggle()
+		refreshText()
+		applyVisibility()
+	end)
+
+	return button
+end
+
+local function moduleHeader(moduleNumber)
+	return collapsibleHeader({
+		text = "Módulo " .. tostring(moduleNumber),
+		backgroundColor = Color3.fromRGB(35, 45, 60),
+		textSize = 16,
+		paddingLeft = 8,
+		isCollapsed = function()
+			return collapsedModules[moduleNumber] == true
+		end,
+		onToggle = function()
+			collapsedModules[moduleNumber] = not collapsedModules[moduleNumber]
+		end,
+	})
+end
+
+local function lessonHeader(moduleNumber, lessonNumber, lessonTitle)
+	local header = collapsibleHeader({
+		text = ("Lección %d — %s"):format(lessonNumber, lessonTitle or ""),
+		backgroundColor = Color3.fromRGB(50, 50, 55),
+		textSize = 13,
+		paddingLeft = 22,
+		isCollapsed = function()
+			return collapsedLessons[lessonKey(moduleNumber, lessonNumber)] == true
+		end,
+		onToggle = function()
+			local key = lessonKey(moduleNumber, lessonNumber)
+			collapsedLessons[key] = not collapsedLessons[key]
+		end,
+	})
+	table.insert(lessonHeaderEntries, { instance = header, moduleNumber = moduleNumber })
+	return header
+end
+
+local function plainMessage(text)
 	local label = Instance.new("TextLabel")
 	label.Size = UDim2.new(1, 0, 0, 26)
 	label.BackgroundTransparency = 1
@@ -239,6 +341,8 @@ local function scriptRow(entry)
 	row.BorderSizePixel = 0
 	row.LayoutOrder = nextOrder()
 	row.Parent = root
+
+	table.insert(scriptRowEntries, { instance = row, moduleNumber = entry.module, lessonNumber = entry.lesson })
 
 	local corner = Instance.new("UICorner")
 	corner.CornerRadius = UDim.new(0, 6)
@@ -345,25 +449,36 @@ local function renderCatalog(scripts)
 	clearRows()
 
 	if not scripts or #scripts == 0 then
-		sectionHeader("El catálogo está vacío.")
+		plainMessage("El catálogo está vacío.")
 		return
 	end
 
 	table.sort(scripts, function(a, b)
-		if a.lesson == b.lesson then
-			return a.name < b.name
+		if a.module ~= b.module then
+			return a.module < b.module
 		end
-		return a.lesson < b.lesson
+		if a.lesson ~= b.lesson then
+			return a.lesson < b.lesson
+		end
+		return a.name < b.name
 	end)
 
+	local lastModule = nil
 	local lastLesson = nil
 	for _, entry in scripts do
+		if entry.module ~= lastModule then
+			moduleHeader(entry.module)
+			lastModule = entry.module
+			lastLesson = nil
+		end
 		if entry.lesson ~= lastLesson then
-			sectionHeader(("Módulo %d, Lección %d — %s"):format(entry.module, entry.lesson, entry.lessonTitle or ""))
+			lessonHeader(entry.module, entry.lesson, entry.lessonTitle)
 			lastLesson = entry.lesson
 		end
 		scriptRow(entry)
 	end
+
+	applyVisibility()
 end
 
 local function sync()
