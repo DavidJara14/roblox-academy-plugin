@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "3.0.0",
   "updatedAt": "2026-09-23",
   "scripts": [
     {
@@ -178,7 +178,9 @@
       "scriptInstanceName": "CicloDiaNoche",
       "file": "scripts/m1l7/ciclo-dia-noche.lua",
       "requiredObjects": [],
-      "conflictsWith": ["m1l7-luz-de-calle-nocturna"],
+      "conflictsWith": [
+        "m1l7-luz-de-calle-nocturna"
+      ],
       "notes": "No lo insertes junto con 'Luz de calle automática': ambos controlan Lighting.ClockTime y competirían entre sí.",
       "tested": false
     },
@@ -213,7 +215,9 @@
         "Construye una farola (Block + Cylinder + Sphere) y añade un SpotLight a la esfera.",
         "Renombra la Part de la esfera exactamente: Sphere."
       ],
-      "conflictsWith": ["m1l7-ciclo-dia-noche"],
+      "conflictsWith": [
+        "m1l7-ciclo-dia-noche"
+      ],
       "notes": "No lo insertes junto con 'Ciclo día/noche': este script ya incluye su propio ciclo de ClockTime.",
       "tested": false
     },
@@ -230,7 +234,10 @@
       "requiredObjects": [
         "Selecciona la Part de la antorcha, que debe tener un efecto Fire como hijo (pestaña Model > Effects > Fire)."
       ],
-      "conflictsWith": ["m1l9-fuego-al-acercarse", "m1l9-fuego-al-acercarse-y-alejarse"],
+      "conflictsWith": [
+        "m1l9-fuego-al-acercarse",
+        "m1l9-fuego-al-acercarse-y-alejarse"
+      ],
       "tested": false
     },
     {
@@ -247,7 +254,10 @@
         "Crea una Part transparente y anclada en Workspace llamada Area.",
         "Crea una Part en Workspace llamada Torch, con un efecto Fire como hijo."
       ],
-      "conflictsWith": ["m1l9-fuego-por-tiempo", "m1l9-fuego-al-acercarse-y-alejarse"],
+      "conflictsWith": [
+        "m1l9-fuego-por-tiempo",
+        "m1l9-fuego-al-acercarse-y-alejarse"
+      ],
       "notes": "Considera usar 'Fuego que se enciende y apaga según proximidad' en su lugar, que es la versión completa de esta misma idea.",
       "tested": false
     },
@@ -265,7 +275,10 @@
         "Crea una Part transparente y anclada en Workspace llamada Area.",
         "Crea una Part en Workspace llamada Torch, con un efecto Fire como hijo."
       ],
-      "conflictsWith": ["m1l9-fuego-por-tiempo", "m1l9-fuego-al-acercarse"],
+      "conflictsWith": [
+        "m1l9-fuego-por-tiempo",
+        "m1l9-fuego-al-acercarse"
+      ],
       "tested": false
     },
     {
@@ -705,6 +718,221 @@
       ],
       "conflictsWith": [],
       "notes": "Debe ser LocalScript: usa Players.LocalPlayer.",
+      "tested": false
+    },
+    {
+      "id": "m3l1-brick",
+      "module": 3,
+      "lesson": 1,
+      "lessonTitle": "¿Qué es un videojuego de disparos?",
+      "name": "Brick: crear ladrillos al hacer clic",
+      "description": "Al hacer clic con la herramienta equipada, crea un ladrillo de color aleatorio junto al jugador.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "Brick",
+      "file": "scripts/m3l1/brick.lua",
+      "requiredObjects": [
+        "Crea una Tool en StarterPack llamada 'Brick', con una Part 'Handle' (obligatoria en toda Tool).",
+        "Selecciona la Tool 'Brick' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "LocalScript: el ladrillo creado solo lo ve el jugador que lo generó, no se replica a otros clientes (diseño de esta lección, no un error).",
+      "tested": false
+    },
+    {
+      "id": "m3l1-magic-wand",
+      "module": 3,
+      "lesson": 1,
+      "lessonTitle": "¿Qué es un videojuego de disparos?",
+      "name": "Magic Wand: crear esferas aleatorias",
+      "description": "Al hacer clic con la varita equipada, crea una esfera de color y tamaño aleatorio que cae desde arriba.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "MagicWand",
+      "file": "scripts/m3l1/magic-wand.lua",
+      "requiredObjects": [
+        "Crea una Tool en StarterPack llamada 'Magic Wand', con su Part 'Handle' obligatoria.",
+        "Selecciona la Tool 'Magic Wand' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Corrige 2 bugs del script original: dependía de una Part llamada exactamente 'Part' (ahora usa 'Handle'), y 'math.random(1.5)' daba error en tiempo de ejecución. Misma limitación de un solo jugador que Brick.",
+      "tested": false
+    },
+    {
+      "id": "m3l1-arma-basica",
+      "module": 3,
+      "lesson": 1,
+      "lessonTitle": "¿Qué es un videojuego de disparos?",
+      "name": "Arma básica: disparar un proyectil físico",
+      "description": "Dispara un proyectil físico (BodyThrust) que se incendia, cambia de color y se autodestruye tras 1 segundo. No hace daño a nada.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ArmaBasica",
+      "file": "scripts/m3l1/arma-basica.lua",
+      "requiredObjects": [
+        "Construye la Tool 'Weapon' (Handle + Part 'Bomb', WeldConstraint, CanCollide=false), en StarterPack.",
+        "Selecciona la Tool 'Weapon' antes de insertar."
+      ],
+      "conflictsWith": [
+        "m3l2-arma-con-objetivo",
+        "m3l3-pistola-cliente"
+      ],
+      "notes": "Un solo jugador, sin daño. Para dañar un objetivo usa 'Arma: dañar a un objetivo' (M3L2); para multijugador real usa 'Pistola (disparo en red)' (M3L3), que reemplaza esta arquitectura por completo.",
+      "tested": false
+    },
+    {
+      "id": "m3l2-generar-laberinto",
+      "module": 3,
+      "lesson": 2,
+      "lessonTitle": "Creando un mapa para el videojuego de disparos",
+      "name": "Generar laberinto",
+      "description": "Genera un laberinto aleatorio (bloques de piso, techos parciales y huecos) recorriendo una cuadrícula, una sola vez al iniciar.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "GenerarLaberinto",
+      "file": "scripts/m3l2/generar-laberinto.lua",
+      "requiredObjects": [
+        "Crea una Part plantilla 'Block' en ServerStorage.",
+        "Crea una Folder vacía en Workspace para el mapa y selecciónala antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Corre una sola vez al iniciar el juego (no un bucle). Úsalo junto con 'Generar muros perimetrales' en la misma Folder.",
+      "tested": false
+    },
+    {
+      "id": "m3l2-generar-muros",
+      "module": 3,
+      "lesson": 2,
+      "lessonTitle": "Creando un mapa para el videojuego de disparos",
+      "name": "Generar muros perimetrales",
+      "description": "Clona una Part 'Wall' a lo largo de los 4 bordes del mapa, formando un perímetro cerrado. Corre una sola vez al iniciar.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "GenerarMuros",
+      "file": "scripts/m3l2/generar-muros.lua",
+      "requiredObjects": [
+        "Crea una Part plantilla 'Wall' en ServerStorage (ej. 4x4x20 studs, anclada).",
+        "Selecciona la misma Folder de mapa donde insertaste 'Generar laberinto' (no hay orden obligatorio entre ambos)."
+      ],
+      "conflictsWith": [],
+      "notes": "",
+      "tested": false
+    },
+    {
+      "id": "m3l2-dano-de-bala",
+      "module": 3,
+      "lesson": 2,
+      "lessonTitle": "Creando un mapa para el videojuego de disparos",
+      "name": "dmg: plantilla de daño de bala a un objetivo",
+      "description": "Plantilla deshabilitada que hace 30 de daño a un Humanoid al ser tocada, y se autodestruye. Se clona dentro de cada bala disparada.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "dmg",
+      "startDisabled": true,
+      "file": "scripts/m3l2/dano-de-bala.lua",
+      "requiredObjects": [
+        "En el Explorer, selecciona el servicio 'ServerStorage' e inserta este script directamente ahí (no dentro de una Part).",
+        "Inserta este ANTES que 'Arma: dañar a un objetivo' — se queda deshabilitado como plantilla."
+      ],
+      "conflictsWith": [],
+      "notes": "El nombre del Script debe ser exactamente 'dmg' — 'Arma: dañar a un objetivo' lo busca por ese nombre.",
+      "tested": false
+    },
+    {
+      "id": "m3l2-arma-con-objetivo",
+      "module": 3,
+      "lesson": 2,
+      "lessonTitle": "Creando un mapa para el videojuego de disparos",
+      "name": "Arma: dañar a un objetivo",
+      "description": "Versión de 'Arma básica' que además clona y habilita 'dmg' en cada bala, para hacer 30 de daño a un Humanoid al impactar.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ArmaConObjetivo",
+      "file": "scripts/m3l2/arma-con-objetivo.lua",
+      "requiredObjects": [
+        "Construye la Tool 'Weapon' igual que en M3L1 (Handle + Part 'Bomb', WeldConstraint, CanCollide=false).",
+        "Inserta primero 'dmg' (plantilla de daño) en ServerStorage, deshabilitado.",
+        "Añade un NPC al mapa y renómbralo 'Target'.",
+        "Selecciona la Tool 'Weapon' antes de insertar."
+      ],
+      "conflictsWith": [
+        "m3l1-arma-basica",
+        "m3l3-pistola-cliente"
+      ],
+      "notes": "Reemplaza a 'Arma básica' (misma Tool, versión con daño) — no las uses juntas. Para multijugador real usa 'Pistola (disparo en red)' de M3L3.",
+      "tested": false
+    },
+    {
+      "id": "m3l3-leaderboard-pvp",
+      "module": 3,
+      "lesson": 3,
+      "lessonTitle": "¿Cómo hacemos multijugador un videojuego de disparos?",
+      "name": "Leaderboard PvP (Frag / Deaths)",
+      "description": "Crea para cada jugador columnas Frag/Deaths y un valor oculto Killer; al morir, actualiza ambas cifras según quién lo mató.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "LeaderboardPvP",
+      "file": "scripts/m3l3/leaderboard-pvp.lua",
+      "requiredObjects": [],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de ServerScriptService: lógica global de PlayerAdded, no atada a ningún objeto. Depende del valor 'Killer' que registra 'Daño de bala (PvP)'.",
+      "tested": false
+    },
+    {
+      "id": "m3l3-pistola-cliente",
+      "module": 3,
+      "lesson": 3,
+      "lessonTitle": "¿Cómo hacemos multijugador un videojuego de disparos?",
+      "name": "Pistola (disparo en red)",
+      "description": "Cámara en primera persona al equipar; al hacer clic, avisa al servidor por RemoteEvent de dónde disparar. Arquitectura multijugador real.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "PistolaCliente",
+      "file": "scripts/m3l3/pistola-cliente.lua",
+      "requiredObjects": [
+        "Construye la Tool 'Gun' (Handle + Base + Scope, Weld, CanCollide=false en Scope), en StarterPack.",
+        "Crea un RemoteEvent 'ShotEvent' en ReplicatedStorage.",
+        "Inserta también 'Bala: crear en el servidor' y 'Daño de bala (PvP)' — sin esos dos el disparo no hace nada.",
+        "Selecciona la Tool 'Gun' antes de insertar."
+      ],
+      "conflictsWith": [
+        "m3l1-arma-basica",
+        "m3l2-arma-con-objetivo"
+      ],
+      "notes": "Reemplaza por completo a 'Arma básica'/'Arma: dañar a un objetivo' (M3L1/M3L2, de un solo jugador). No las uses juntas. Prueba con al menos 2 jugadores simulados en Studio.",
+      "tested": false
+    },
+    {
+      "id": "m3l3-crear-bala-servidor",
+      "module": 3,
+      "lesson": 3,
+      "lessonTitle": "¿Cómo hacemos multijugador un videojuego de disparos?",
+      "name": "Bala: crear en el servidor",
+      "description": "Escucha el RemoteEvent de disparo, crea la bala en el servidor con humo/fuego, le clona el daño, y la lanza hacia el mouse.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "CrearBalaServidor",
+      "file": "scripts/m3l3/crear-bala-servidor.lua",
+      "requiredObjects": [
+        "Requiere el RemoteEvent 'ShotEvent' en ReplicatedStorage (ver 'Pistola (disparo en red)').",
+        "Requiere la plantilla 'Daño de bala (PvP)' (GunDamage) deshabilitada en ServerStorage."
+      ],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de ServerScriptService: listener global del RemoteEvent, no atado a ningún objeto. Corrige un bug del original (humo/fuego se creaban en el arma en vez de en la bala, y la bala quedaba anidada en el arma en vez de volar libre). Nota de seguridad: no valida las coordenadas que envía el cliente — aceptable para el nivel del curso.",
+      "tested": false
+    },
+    {
+      "id": "m3l3-dano-de-bala-pvp",
+      "module": 3,
+      "lesson": 3,
+      "lessonTitle": "¿Cómo hacemos multijugador un videojuego de disparos?",
+      "name": "Daño de bala (PvP)",
+      "description": "Plantilla deshabilitada: hace 10 de daño a un Humanoid al ser tocada y registra al atacante como 'Killer' de la víctima.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "GunDamage",
+      "startDisabled": true,
+      "file": "scripts/m3l3/dano-de-bala-pvp.lua",
+      "requiredObjects": [
+        "En el Explorer, selecciona el servicio 'ServerStorage' e inserta este script directamente ahí (no dentro de una Part).",
+        "Inserta este ANTES que 'Bala: crear en el servidor' — se queda deshabilitado como plantilla."
+      ],
+      "conflictsWith": [],
+      "notes": "El nombre del Script debe ser exactamente 'GunDamage' — 'Bala: crear en el servidor' lo busca por ese nombre. Requiere 'Leaderboard PvP' para que el registro de Killer tenga efecto.",
       "tested": false
     }
   ]

@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v2.0.0)
+# Timeclub Academy — Plugin de Roblox Studio (v3.0.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -28,6 +28,8 @@ scripts/
   m1l5/
   m1l7/
   m1l9/
+  m2l2/ m2l3/ m2l4/ m2l6/ m2l7/ m2l8/ m2l9/    Módulo 2
+  m3l1/ m3l2/ m3l3/                             Módulo 3
 src/
   TimeclubAcademyPlugin.lua   El plugin en sí (UI + lógica de sincronización/inserción)
 ```
@@ -58,26 +60,27 @@ Cada entrada de `scripts` describe un script insertable:
 4. Cambia `"tested": false` a `"tested": true` solo después de confirmar que funciona.
 5. Haz commit y push. La próxima vez que alguien pulse "Sincronizar" en el plugin, verá el script nuevo — sin reinstalar nada.
 
-## Alcance de esta versión (v1.0)
+## Alcance de esta versión (v3.0.0)
 
-Incluye las lecciones de Módulo 1 y Módulo 2 con scripts documentados:
+Incluye el curso completo (24 lecciones, 3 módulos) con scripts documentados:
 - **Módulo 1**: M1L4, M1L5, M1L7, M1L9 (19 scripts).
-- **Módulo 2**: M1L2, M2L3, M2L4, M2L6, M2L7, M2L8, M2L9 (22 scripts).
+- **Módulo 2**: M2L2, M2L3, M2L4, M2L6, M2L7, M2L8, M2L9 (22 scripts).
+- **Módulo 3**: M3L1, M3L2, M3L3 (11 scripts).
 
 Quedan fuera, explícitamente:
 
-- **Módulo 3** (aún no analizado).
-- Lecciones sin script (M1L1/2/3/6, M2L1/M2L5/M2L10): no necesitan catálogo.
-- M1L8, M1L10 y la tienda de M2L10: sus scripts adicionales viven en plataformas externas (`mars.alg.academy` / `learn.alg.academy` tienda) a las que no tenemos acceso al contenido real.
+- Lecciones sin script (M1L1/2/3/6, M2L1/M2L5/M2L10, M3L4): no necesitan catálogo (M3L4 es solo configuración de Properties, sin código).
+- M1L8, M1L10, la tienda de M2L10 y la tienda de M3L4: sus scripts adicionales viven en plataformas externas (`mars.alg.academy` / `learn.alg.academy`) a las que no tenemos acceso al contenido real.
 - Modelos, Parts o efectos embebidos en el plugin — es solo scripts + instrucciones de qué construir a mano.
 - Control de acceso por alumno (gating vía backend).
 
 **Nota sobre M2L8**: es un sistema de 4 scripts interdependientes (spawn de enemigos + IA de persecución + combate) que comparten una jerarquía específica de Folders — no son piezas sueltas intercambiables como el resto del catálogo. Ver `reportes/M2/M2L8-reporte.md` en el proyecto de análisis para el detalle completo, incluidos 2 bugs reales corregidos del material original.
 
-## Próximos pasos (fuera de v1.0)
+**Nota sobre Módulo 3 (shooter)**: la lección enseña la mecánica de disparo en 3 capas progresivas que **no se combinan, se reemplazan**: `m3l1-arma-basica` (sin daño, un jugador) → `m3l2-arma-con-objetivo` (con daño, un jugador) → `m3l3-pistola-cliente` + `m3l3-crear-bala-servidor` (multijugador real vía RemoteEvent). El catálogo marca estas tres como `conflictsWith` entre sí. `m3l3-crear-bala-servidor` corrige un bug real del material original (humo/fuego y la bala se parentaban al arma en vez de volar libres en Workspace). Ver `reportes/M3/` en el proyecto de análisis para el detalle completo.
 
-- Probar cada script en Roblox Studio y marcarlo `"tested": true`.
+## Próximos pasos (fuera de v3.0.0)
+
+- Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluido Módulo 3, sigue sin confirmación manual).
 - Publicar el plugin como Plugin real de Roblox (bajo un Group de la academia), no listado, para que se actualice solo en las máquinas de los alumnos.
 - Conectar el catálogo al backend de la academia para filtrar por alumno/lección habilitada (gating).
-- Analizar Módulos 2 y 3, y ampliar el catálogo.
 - Evaluar soporte para modelos/Parts embebidos, no solo scripts.
