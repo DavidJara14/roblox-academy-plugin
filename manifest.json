@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0",
+  "version": "5.0.0",
   "updatedAt": "2026-09-23",
   "scripts": [
     {
@@ -1142,6 +1142,138 @@
       ],
       "conflictsWith": [],
       "notes": "Caso legítimo de StarterPlayerScripts: cada jugador necesita reproducir su propio audio. Edita AUDIO_ID (y opcionalmente NOMBRE_CANCION) en el script tras insertarlo, con el id de tu canción elegida.",
+      "tested": false
+    },
+    {
+      "id": "m5l1-camera-script",
+      "module": 5,
+      "lesson": 1,
+      "lessonTitle": "¿Qué son los videojuegos de arcade?",
+      "name": "CameraScript: cámara cenital que sigue a la nave",
+      "description": "Pone la cámara en modo Scriptable y la mantiene mirando hacia abajo, siguiendo la posición de la nave del jugador.",
+      "targetParent": "StarterPlayerScripts",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "CameraScript",
+      "file": "scripts/m5l1/camera-script.lua",
+      "requiredObjects": [
+        "Construye tu personaje custom (nave) con una Part 'HumanoidRootPart' (ver M5L1: modelo StarterCharacter movido a StarterPlayer)."
+      ],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de StarterPlayerScripts: cada jugador controla su propia cámara.",
+      "tested": false
+    },
+    {
+      "id": "m5l1-player-ship-handler",
+      "module": 5,
+      "lesson": 1,
+      "lessonTitle": "¿Qué son los videojuegos de arcade?",
+      "name": "PlayerShipHandler: propiedad de red + tabla de clasificación",
+      "description": "Da la propiedad de red de la nave a cada jugador (menor latencia de movimiento) y crea su tabla de clasificación (Score/Loose).",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "PlayerShipHandler",
+      "file": "scripts/m5l1/player-ship-handler.lua",
+      "requiredObjects": [
+        "Requiere el personaje custom de nave de M5L1 (Part 'HumanoidRootPart')."
+      ],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de ServerScriptService: lógica global de PlayerAdded. Esta versión ya incluye la tabla de clasificación que M5L3 añade sobre la base de M5L1 — sirve desde M5L1 en adelante, no hace falta una versión 'sin tabla de clasificación' aparte. Requiere 'TouchScript' (M5L2) para que Score/Loose cambien.",
+      "tested": false
+    },
+    {
+      "id": "m5l1-control-script",
+      "module": 5,
+      "lesson": 1,
+      "lessonTitle": "¿Qué son los videojuegos de arcade?",
+      "name": "ControlScript: mover y apuntar la nave (teclado + mouse)",
+      "description": "Aplica fuerza hacia adelante al VectorForce de la nave con W o clic izquierdo, y la gira para que apunte hacia el mouse.",
+      "targetParent": "StarterPlayerScripts",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ControlScript",
+      "file": "scripts/m5l1/control-script.lua",
+      "requiredObjects": [
+        "Añade un VectorForce (nombre por defecto 'VectorForce') y un Attachment a la Part 'HumanoidRootPart' de tu nave."
+      ],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de StarterPlayerScripts: controles de cliente.",
+      "tested": false
+    },
+    {
+      "id": "m5l2-gun-script",
+      "module": 5,
+      "lesson": 2,
+      "lessonTitle": "Creando ataques en arcades",
+      "name": "GunScript: generador de enemigos",
+      "description": "Cada 2 segundos, clona la plantilla EnemyShip y la lanza hacia afuera del cañón con velocidad aleatoria.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "GunScript",
+      "file": "scripts/m5l2/gun-script.lua",
+      "requiredObjects": [
+        "Crea una plantilla 'EnemyShip' dentro de una Folder 'Enemies' en ServerStorage.",
+        "Crea una Folder 'Enemies' (vacía) en Workspace.",
+        "Crea dos Parts 'GunStart'/'GunEnd' (el cañón), mueve 'GunEnd' a la Arena.",
+        "Selecciona 'GunEnd' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "",
+      "tested": false
+    },
+    {
+      "id": "m5l2-touch-script",
+      "module": 5,
+      "lesson": 2,
+      "lessonTitle": "Creando ataques en arcades",
+      "name": "TouchScript: colisión enemigo-jugador + tabla de clasificación",
+      "description": "Al chocar con un enemigo, suma 1 a Loose y reinicia Score a 0, saca al jugador del juego con una explosión, y lo restaura tras 3 segundos.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "TouchScript",
+      "file": "scripts/m5l2/touch-script.lua",
+      "requiredObjects": [
+        "Requiere 'PlayerShipHandler' (crea la tabla leaderstats con Score/Loose) ya insertado.",
+        "Selecciona 'EnemyShip' (dentro de ServerStorage.Enemies) antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Esta versión ya incluye la actualización de la tabla de clasificación que M5L3 añade sobre la base de M5L2 — sirve desde M5L2 en adelante. Filtra por nombre de Part (HumanoidRootPart/Cannon) en vez de buscar un Humanoid, porque el personaje de esta lección (la nave) no tiene objeto Humanoid.",
+      "tested": false
+    },
+    {
+      "id": "m5l3-joystick-movil",
+      "module": 5,
+      "lesson": 3,
+      "lessonTitle": "Desarrollando una versión móvil del juego",
+      "name": "Joystick de movimiento (móvil)",
+      "description": "Joystick táctil: al tocar y arrastrar cerca del stick, mueve y orienta la nave en la dirección del arrastre.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "JoystickMovil",
+      "file": "scripts/m5l3/joystick-movil.lua",
+      "requiredObjects": [
+        "Crea un ScreenGui con un ImageButton (el 'stick' visual).",
+        "Requiere el VectorForce de la nave (ver 'ControlScript' de M5L1).",
+        "Selecciona el ImageButton antes de insertar.",
+        "Prueba con el emulador de dispositivo táctil de Roblox Studio (Studio no tiene pantalla táctil real)."
+      ],
+      "conflictsWith": [],
+      "notes": "",
+      "tested": false
+    },
+    {
+      "id": "m5l3-score-changer",
+      "module": 5,
+      "lesson": 3,
+      "lessonTitle": "Desarrollando una versión móvil del juego",
+      "name": "ScoreChanger: mostrar el puntaje en pantalla",
+      "description": "Muestra el puntaje actual del jugador (leaderstats.Score) en un TextLabel, con el color del texto cambiando cíclicamente.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ScoreChanger",
+      "file": "scripts/m5l3/score-changer.lua",
+      "requiredObjects": [
+        "Requiere 'PlayerShipHandler' (crea leaderstats.Score) ya insertado.",
+        "Crea un TextLabel en un ScreenGui, con texto inicial '0'.",
+        "Selecciona el TextLabel antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "",
       "tested": false
     }
   ]
