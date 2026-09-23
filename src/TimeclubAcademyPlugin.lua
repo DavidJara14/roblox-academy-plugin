@@ -1,5 +1,5 @@
 --[[
-	Timeclub Academy — Catálogo de Scripts (v1.0.0)
+	Timeclub Academy — Catálogo de Scripts (v1.1.0)
 
 	Plugin de Roblox Studio para el curso de diseño de videojuegos.
 
@@ -13,9 +13,14 @@
 	  plugin instalado ve los mismos scripts. El control de acceso por
 	  alumno (vía la plataforma del curso) queda para una versión futura.
 	- Cada entrada del catálogo indica dónde debe insertarse el script
-	  (ServerScriptService o la Part seleccionada) y qué objetos debe
-	  crear el alumno a mano de antemano — en v1.0 no hay modelos
-	  embebidos, solo scripts + instrucciones.
+	  (dentro de la Part seleccionada, o como script independiente en
+	  Workspace) y qué objetos debe crear el alumno a mano de antemano —
+	  en v1.0 no hay modelos embebidos, solo scripts + instrucciones.
+	- Por diseño, el catálogo evita ServerScriptService salvo que sea
+	  imprescindible: la mayoría de los scripts viven dentro de la propia
+	  Part a la que afectan (script.Parent), o como script independiente
+	  en Workspace cuando la mecánica no pertenece a un solo objeto
+	  (por ejemplo, un ciclo de día/noche).
 
 	Para actualizar la URL del repositorio, cambia REPO_RAW_BASE_URL.
 ]]
@@ -23,7 +28,7 @@
 local ChangeHistoryService = game:GetService("ChangeHistoryService")
 local HttpService = game:GetService("HttpService")
 local Selection = game:GetService("Selection")
-local ServerScriptService = game:GetService("ServerScriptService")
+local Workspace = game:GetService("Workspace")
 
 -------------------------------------------------
 -- Configuración
@@ -198,8 +203,8 @@ local function insertScript(entry, statusCallback)
 			return
 		end
 		targetParent = selection[1]
-	elseif entry.targetParent == "ServerScriptService" then
-		targetParent = ServerScriptService
+	elseif entry.targetParent == "Workspace" then
+		targetParent = Workspace
 	else
 		statusCallback("Ubicación de destino desconocida: " .. tostring(entry.targetParent))
 		return

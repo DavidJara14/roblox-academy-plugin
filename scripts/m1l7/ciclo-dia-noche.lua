@@ -1,8 +1,8 @@
 -- Ciclo día/noche — Módulo 1, Lección 7
 --
--- Ubicación: ServerScriptService.
--- (La lección original lo coloca en Workspace; se recomienda
--- ServerScriptService por buena práctica, el comportamiento es el mismo.)
+-- Ubicación: script independiente en Workspace (no está atado a
+-- ninguna Part en particular, así que no aplica insertarlo dentro de
+-- una — es una mecánica global del lugar).
 -- Requisito: ninguno además de Lighting, que ya existe en cualquier lugar.
 --
 -- Qué hace: incrementa la hora del día (Lighting.ClockTime, de 0 a 24)

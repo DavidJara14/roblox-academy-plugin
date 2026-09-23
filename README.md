@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v1.0.0)
+# Timeclub Academy — Plugin de Roblox Studio (v1.1.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -8,6 +8,7 @@ Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un cat�
 - El plugin descarga ambos con `HttpService` desde `raw.githubusercontent.com` cada vez que el profesor pulsa **Sincronizar**. Actualizar contenido es solo hacer `git push` — no hace falta republicar el plugin.
 - **v1.0 no filtra el catálogo por alumno.** Cualquiera que tenga el plugin instalado ve el mismo catálogo completo. El control de acceso por alumno (vía la plataforma del curso) es una versión futura.
 - El repositorio es **público** a propósito: el plugin lee los archivos `raw` sin autenticación. El contenido son scripts didácticos, no datos de alumnos.
+- **El catálogo evita `ServerScriptService` salvo que sea imprescindible.** La mayoría de los scripts viven dentro de la propia Part a la que afectan (usan `script.Parent`, así que funcionan con cualquier Part sin necesitar nombres especiales), o como script independiente en `Workspace` cuando la mecánica coordina varios objetos a la vez (por ejemplo, un ciclo de día/noche que no pertenece a ninguna Part en particular).
 
 ## Instalar para probar (modo local)
 
@@ -40,7 +41,7 @@ Cada entrada de `scripts` describe un script insertable:
 | `id` | Identificador único y estable del script. |
 | `module`, `lesson`, `lessonTitle` | A qué lección del curso pertenece. |
 | `name`, `description` | Lo que ve el profesor/alumno en el panel. |
-| `targetParent` | `"ServerScriptService"` o `"SelectedPart"` — dónde se inserta el `Script`. |
+| `targetParent` | `"SelectedPart"` (dentro de la Part seleccionada, usa `script.Parent`) o `"Workspace"` (script independiente, para mecánicas que no pertenecen a una sola Part) — dónde se inserta el `Script`. |
 | `scriptInstanceName` | Nombre que tendrá el `Script` insertado (se usa también para detectar y reemplazar una inserción anterior). |
 | `file` | Ruta relativa del `.lua` dentro de este repo. |
 | `requiredObjects` | Lista de instrucciones en español de qué debe crear el alumno a mano antes de insertar (en v1.0 no hay modelos embebidos, solo scripts). |
@@ -57,7 +58,7 @@ Cada entrada de `scripts` describe un script insertable:
 
 ## Alcance de esta versión (v1.0)
 
-Incluye únicamente las 4 lecciones del Módulo 1 que tienen scripts documentados: **M1L4, M1L5, M1L7 y M1L9** (12 scripts en total). Quedan fuera de v1.0, explícitamente:
+Incluye únicamente las 4 lecciones del Módulo 1 que tienen scripts documentados: **M1L4, M1L5, M1L7 y M1L9** (14 scripts en total). Quedan fuera de v1.0, explícitamente:
 
 - Módulos 2 y 3 (aún no analizados).
 - Lecciones de M1 sin script (M1L1, M1L2, M1L3, M1L6): no necesitan catálogo.

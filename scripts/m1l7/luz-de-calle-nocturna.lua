@@ -1,6 +1,7 @@
 -- Luz de calle automática (según la hora) — Módulo 1, Lección 7
 --
--- Ubicación: ServerScriptService.
+-- Ubicación: script independiente en Workspace (controla Lighting
+-- globalmente además de la farola, así que no vive dentro de ella).
 -- Requisito: una Part en Workspace nombrada exactamente Sphere, con un
 -- SpotLight como hijo (la farola construida en la lección: Block +
 -- Cylinder + Sphere, con el SpotLight adjunto a la esfera).

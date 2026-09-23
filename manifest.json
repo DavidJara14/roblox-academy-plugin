@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updatedAt": "2026-09-22",
   "scripts": [
     {
@@ -16,38 +16,71 @@
         "Selecciona (o crea) la Part que quieras usar como punto de control antes de insertar este script."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
-      "id": "m1l5-botones-interactivos",
+      "id": "m1l5-cambiar-material-al-tocar",
       "module": 1,
       "lesson": 5,
       "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
-      "name": "Botones interactivos (Material, Color, Transparencia)",
-      "description": "Al tocar cada uno de 3 botones, cambia su Material, su color (BrickColor) y, en el primero, su transparencia.",
-      "targetParent": "ServerScriptService",
-      "scriptInstanceName": "BotonesInteractivos",
-      "file": "scripts/m1l5/botones-interactivos.lua",
+      "name": "Cambiar Material al tocar",
+      "description": "Al tocar esta Part, cambia su Material a Neon. Funciona con cualquier Part, no necesita nombres especiales.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CambiarMaterialAlTocar",
+      "file": "scripts/m1l5/cambiar-material-al-tocar.lua",
       "requiredObjects": [
-        "Crea 3 Parts en Workspace y renómbralas exactamente: Button1, Button2, Button3."
+        "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
       ],
       "conflictsWith": [],
       "tested": false
     },
     {
-      "id": "m1l5-dynamite",
+      "id": "m1l5-cambiar-color-al-tocar",
       "module": 1,
       "lesson": 5,
       "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
-      "name": "Dynamite (peligro que destruye al personaje)",
-      "description": "Al tocar la Part Dynamite, el personaje muere instantáneamente (Humanoid.Health = 0).",
-      "targetParent": "ServerScriptService",
-      "scriptInstanceName": "Dynamite",
-      "file": "scripts/m1l5/dynamite.lua",
+      "name": "Cambiar Color al tocar",
+      "description": "Al tocar esta Part, cambia su color (BrickColor). Funciona con cualquier Part.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CambiarColorAlTocar",
+      "file": "scripts/m1l5/cambiar-color-al-tocar.lua",
       "requiredObjects": [
-        "Crea una Part en Workspace y renómbrala exactamente: Dynamite."
+        "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
       ],
       "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l5-cambiar-transparencia-al-tocar",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Cambiar Transparencia al tocar",
+      "description": "Al tocar esta Part, cambia su Transparency a 0.5. Funciona con cualquier Part.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CambiarTransparenciaAlTocar",
+      "file": "scripts/m1l5/cambiar-transparencia-al-tocar.lua",
+      "requiredObjects": [
+        "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l5-trampa-mortal",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Trampa mortal",
+      "description": "Al tocar esta Part, el personaje muere al instante (Humanoid.Health = 0). Sin efecto visual de explosión. Funciona con cualquier Part.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "TrampaMortal",
+      "file": "scripts/m1l5/trampa-mortal.lua",
+      "requiredObjects": [
+        "Selecciona la Part que quieras convertir en trampa antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Antes se llamaba 'Dynamite'; se renombró porque el comportamiento actual no incluye ningún efecto de explosión, solo mata al personaje.",
       "tested": false
     },
     {
@@ -57,7 +90,7 @@
       "lessonTitle": "Creando un mundo propio: edificios",
       "name": "Ciclo día/noche",
       "description": "Hace avanzar Lighting.ClockTime indefinidamente, generando un ciclo día/noche continuo.",
-      "targetParent": "ServerScriptService",
+      "targetParent": "Workspace",
       "scriptInstanceName": "CicloDiaNoche",
       "file": "scripts/m1l7/ciclo-dia-noche.lua",
       "requiredObjects": [],
@@ -72,7 +105,7 @@
       "lessonTitle": "Creando un mundo propio: edificios",
       "name": "Parpadeo de tres luces",
       "description": "Apaga y enciende, sincronizadas cada segundo, tres fuentes de luz (PointLight, SpotLight, SurfaceLight).",
-      "targetParent": "ServerScriptService",
+      "targetParent": "Workspace",
       "scriptInstanceName": "ParpadeoDeLuces",
       "file": "scripts/m1l7/parpadeo-de-luces.lua",
       "requiredObjects": [
@@ -89,7 +122,7 @@
       "lessonTitle": "Creando un mundo propio: edificios",
       "name": "Luz de calle automática (según la hora)",
       "description": "Incluye su propio ciclo día/noche y enciende una farola (SpotLight) entre las 16:00 y las 6:00.",
-      "targetParent": "ServerScriptService",
+      "targetParent": "Workspace",
       "scriptInstanceName": "LuzDeCalleNocturna",
       "file": "scripts/m1l7/luz-de-calle-nocturna.lua",
       "requiredObjects": [
@@ -107,11 +140,11 @@
       "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
       "name": "Fuego intermitente por tiempo",
       "description": "Enciende el fuego de una antorcha 3 segundos y lo apaga 2 segundos, en bucle.",
-      "targetParent": "ServerScriptService",
+      "targetParent": "SelectedPart",
       "scriptInstanceName": "FuegoPorTiempo",
       "file": "scripts/m1l9/fuego-por-tiempo.lua",
       "requiredObjects": [
-        "Crea una Part en Workspace llamada Torch, con un efecto Fire como hijo (pestaña Model > Effects > Fire)."
+        "Selecciona la Part de la antorcha, que debe tener un efecto Fire como hijo (pestaña Model > Effects > Fire)."
       ],
       "conflictsWith": ["m1l9-fuego-al-acercarse", "m1l9-fuego-al-acercarse-y-alejarse"],
       "tested": false
@@ -123,7 +156,7 @@
       "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
       "name": "Fuego que se enciende al acercarse",
       "description": "Enciende el fuego cuando el jugador toca una zona de detección. Nunca se apaga (versión intermedia de la lección).",
-      "targetParent": "ServerScriptService",
+      "targetParent": "Workspace",
       "scriptInstanceName": "FuegoAlAcercarse",
       "file": "scripts/m1l9/fuego-al-acercarse.lua",
       "requiredObjects": [
@@ -141,7 +174,7 @@
       "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
       "name": "Fuego que se enciende y apaga según proximidad",
       "description": "Enciende el fuego cuando el jugador toca una zona de detección, y lo apaga (con 3 segundos de retraso) al alejarse.",
-      "targetParent": "ServerScriptService",
+      "targetParent": "Workspace",
       "scriptInstanceName": "FuegoAlAcercarseYAlejarse",
       "file": "scripts/m1l9/fuego-al-acercarse-y-alejarse.lua",
       "requiredObjects": [
@@ -174,7 +207,7 @@
       "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
       "name": "Aparición de un objeto al tocar una Part",
       "description": "Esconde un Model al iniciar el juego y lo hace reaparecer cuando el jugador toca una Part disparadora.",
-      "targetParent": "ServerScriptService",
+      "targetParent": "Workspace",
       "scriptInstanceName": "AparicionDeObjeto",
       "file": "scripts/m1l9/aparicion-de-objeto.lua",
       "requiredObjects": [
@@ -190,12 +223,12 @@
       "lesson": 9,
       "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
       "name": "Desaparición (destrucción) de una Part al tocarla",
-      "description": "Destruye permanentemente una Part cuando el jugador la toca.",
-      "targetParent": "ServerScriptService",
+      "description": "Destruye permanentemente una Part cuando el jugador la toca. Funciona con cualquier Part.",
+      "targetParent": "SelectedPart",
       "scriptInstanceName": "DestruccionDeObjeto",
       "file": "scripts/m1l9/destruccion-de-objeto.lua",
       "requiredObjects": [
-        "Crea una Part en Workspace y renómbrala exactamente: SorpresaFragil."
+        "Selecciona la Part que quieras que desaparezca al tocarla antes de insertar."
       ],
       "conflictsWith": [],
       "tested": false

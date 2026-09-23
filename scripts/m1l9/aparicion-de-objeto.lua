@@ -1,6 +1,7 @@
 -- Aparición de un objeto al tocar una Part — Módulo 1, Lección 9
 --
--- Ubicación: ServerScriptService.
+-- Ubicación: script independiente en Workspace (coordina un Model y
+-- una Part disparadora, así que no vive dentro de ninguno de los dos).
 -- Requisito: un Model en Workspace (por ejemplo, insertado desde el
 -- Toolbox) nombrado exactamente SorpresaModel, y una Part disparadora en
 -- Workspace nombrada exactamente SorpresaTrigger.

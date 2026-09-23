@@ -1,6 +1,7 @@
 -- Parpadeo de tres luces — Módulo 1, Lección 7
 --
--- Ubicación: ServerScriptService.
+-- Ubicación: script independiente en Workspace (coordina 3 Parts a la
+-- vez, así que no vive dentro de ninguna de ellas en particular).
 -- Requisito: 3 Parts en Workspace nombradas exactamente Part1, Part2, Part3,
 -- cada una con el tipo de luz correspondiente como hijo directo (nombre
 -- por defecto al insertarlo desde la pestaña Model > Lighting):

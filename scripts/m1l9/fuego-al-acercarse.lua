@@ -1,6 +1,8 @@
 -- Fuego que se enciende al acercarse — Módulo 1, Lección 9
 --
--- Ubicación: ServerScriptService.
+-- Ubicación: script independiente en Workspace (coordina dos Parts
+-- distintas — la zona y la antorcha — así que no vive dentro de
+-- ninguna de las dos).
 -- Requisito: una Part transparente y anclada en Workspace nombrada
 -- exactamente Area (zona de detección), y una Part Torch con un efecto
 -- Fire como hijo.
