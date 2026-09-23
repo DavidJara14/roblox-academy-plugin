@@ -1,5 +1,5 @@
 --[[
-	Timeclub Academy — Catálogo de Scripts (v1.3.0)
+	Timeclub Academy — Catálogo de Scripts (v1.4.0)
 
 	Plugin de Roblox Studio para el curso de diseño de videojuegos.
 
@@ -24,6 +24,11 @@
 	- El panel agrupa el catálogo por Módulo y Lección, y cada encabezado
 	  se puede colapsar/expandir con un clic — así la lista no crece sin
 	  control a medida que se agregan más módulos.
+	- Cada entrada define `scriptClassName` ("Script" o "LocalScript") y
+	  `targetParent` ("SelectedPart", "Workspace", "ServerScriptService"
+	  o "StarterPlayerScripts"). ServerScriptService/StarterPlayerScripts
+	  solo se usan quando la mecánica es global de verdad (ej. lógica de
+	  PlayerAdded) — la mayoría de los scripts prefieren SelectedPart.
 
 	Para actualizar la URL del repositorio, cambia REPO_RAW_BASE_URL.
 ]]
@@ -301,14 +306,23 @@ local function insertScript(entry, statusCallback)
 	if entry.targetParent == "SelectedPart" then
 		local selection = Selection:Get()
 		if #selection ~= 1 then
-			statusCallback("Selecciona exactamente una Part en el Explorer antes de insertar este script.")
+			statusCallback("Selecciona exactamente un objeto en el Explorer antes de insertar este script.")
 			return
 		end
 		targetParent = selection[1]
 	elseif entry.targetParent == "Workspace" then
 		targetParent = Workspace
+	elseif entry.targetParent == "ServerScriptService" then
+		targetParent = game:GetService("ServerScriptService")
+	elseif entry.targetParent == "StarterPlayerScripts" then
+		targetParent = game:GetService("StarterPlayer"):FindFirstChild("StarterPlayerScripts")
 	else
 		statusCallback("Ubicación de destino desconocida: " .. tostring(entry.targetParent))
+		return
+	end
+
+	if not targetParent then
+		statusCallback("No se encontró el destino (" .. tostring(entry.targetParent) .. ") en este lugar.")
 		return
 	end
 
@@ -319,9 +333,12 @@ local function insertScript(entry, statusCallback)
 		existing:Destroy()
 	end
 
-	local newScript = Instance.new("Script")
+	local newScript = Instance.new(entry.scriptClassName or "Script")
 	newScript.Name = entry.scriptInstanceName
 	newScript.Source = source
+	if entry.startDisabled then
+		newScript.Disabled = true
+	end
 	newScript.Parent = targetParent
 
 	Selection:Set({ newScript })

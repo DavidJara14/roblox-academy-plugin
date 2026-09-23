@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "updatedAt": "2026-09-22",
+  "version": "2.0.0",
+  "updatedAt": "2026-09-23",
   "scripts": [
     {
       "id": "m1l4-checkpoint",
@@ -315,6 +315,396 @@
         "Selecciona la Part que quieras que desaparezca al tocarla antes de insertar."
       ],
       "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l2-revelar-cristal-en-dialogo",
+      "module": 2,
+      "lesson": 2,
+      "lessonTitle": "Añadiendo bots conversacionales al juego",
+      "name": "Revelar un objeto según elección de diálogo",
+      "description": "Esconde un Model al iniciar y lo revela cuando el jugador elige una rama específica de un árbol de Dialog/DialogChoice anidado.",
+      "targetParent": "StarterPlayerScripts",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "RevelarCristalEnDialogo",
+      "file": "scripts/m2l2/revelar-cristal-en-dialogo.lua",
+      "requiredObjects": [
+        "Crea un NPC en Workspace llamado QuestNPC, con un Dialog en su Head.",
+        "Dentro del Dialog, crea DialogChoice1 y DialogChoice2; dentro de DialogChoice2, anida un DialogChoice3.",
+        "Crea un Model en Workspace llamado Crystal."
+      ],
+      "conflictsWith": [],
+      "notes": "Debe ser LocalScript en StarterPlayerScripts: cada jugador necesita su propia interacción de diálogo.",
+      "tested": false
+    },
+    {
+      "id": "m2l3-teletransporte",
+      "module": 2,
+      "lesson": 3,
+      "lessonTitle": "Diseño de niveles y transiciones entre niveles",
+      "name": "Teletransporte entre dos puntos",
+      "description": "Al tocar Part1 dentro de una Folder, mueve al personaje a la posición de Part2 (elevado 10 studs).",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "Teletransporte",
+      "file": "scripts/m2l3/teletransporte.lua",
+      "requiredObjects": [
+        "Crea una Folder en Workspace con 2 Parts ancladas de colores distintos dentro, nombradas Part1 (origen) y Part2 (destino).",
+        "Selecciona la Folder (no las Parts) antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l4-pregunta-respuesta-incorrecta",
+      "module": 2,
+      "lesson": 4,
+      "lessonTitle": "Añadiendo acertijos y rompecabezas a la misión",
+      "name": "Pregunta: respuesta incorrecta (mata al tocar)",
+      "description": "Si el personaje toca esta Part (una opción incorrecta de una pregunta de elección múltiple), muere al instante.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "RespuestaIncorrecta",
+      "file": "scripts/m2l4/pregunta-respuesta-incorrecta.lua",
+      "requiredObjects": [
+        "Selecciona la Part que representa una respuesta incorrecta."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l4-pregunta-respuesta-correcta",
+      "module": 2,
+      "lesson": 4,
+      "lessonTitle": "Añadiendo acertijos y rompecabezas a la misión",
+      "name": "Pregunta: respuesta correcta (enciende partícula)",
+      "description": "Si el personaje toca esta Part (la opción correcta), enciende su ParticleEmitter.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "RespuestaCorrecta",
+      "file": "scripts/m2l4/pregunta-respuesta-correcta.lua",
+      "requiredObjects": [
+        "Añade un ParticleEmitter (apagado) a la Part de respuesta correcta.",
+        "Selecciona esa misma Part antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l4-teletransporte-con-objetos",
+      "module": 2,
+      "lesson": 4,
+      "lessonTitle": "Añadiendo acertijos y rompecabezas a la misión",
+      "name": "Teletransporte que se desbloquea al recoger 3 objetos",
+      "description": "Esconde el destino de un teletransporte hasta que el jugador recoja 3 cristales; entonces lo revela.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "TeletransporteConObjetos",
+      "file": "scripts/m2l4/teletransporte-con-objetos.lua",
+      "requiredObjects": [
+        "Crea una Folder 'Teleports' en Workspace con Part1 y Part2 dentro (ver 'Teletransporte entre dos puntos').",
+        "Crea 3 Parts coleccionables en Workspace nombradas Crystal1, Crystal2, Crystal3.",
+        "Selecciona la Folder 'Teleports' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l4-mostrar-ventana-de-codigo",
+      "module": 2,
+      "lesson": 4,
+      "lessonTitle": "Añadiendo acertijos y rompecabezas a la misión",
+      "name": "Mostrar ventana de código al presionar botón",
+      "description": "Al presionar un TextButton, hace visible un Frame con la ventana de entrada del código secreto.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "MostrarVentanaDeCodigo",
+      "file": "scripts/m2l4/mostrar-ventana-de-codigo.lua",
+      "requiredObjects": [
+        "Crea un ScreenGui en StarterGui con un TextButton (nombrado TextButton) y un Frame (nombrado Frame, Visible=false).",
+        "Selecciona el ScreenGui antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Debe ser LocalScript: MouseButton1Click solo funciona en StarterGui como LocalScript.",
+      "tested": false
+    },
+    {
+      "id": "m2l4-validar-codigo-secreto",
+      "module": 2,
+      "lesson": 4,
+      "lessonTitle": "Añadiendo acertijos y rompecabezas a la misión",
+      "name": "Validar código secreto ingresado",
+      "description": "Compara el texto ingresado en un TextBox contra una palabra secreta y cambia su color (verde/rojo).",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ValidarCodigoSecreto",
+      "file": "scripts/m2l4/validar-codigo-secreto.lua",
+      "requiredObjects": [
+        "Dentro del Frame de la ventana, añade un TextBox nombrado TextBox.",
+        "Selecciona ese Frame antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Debe ser LocalScript: TextBox.FocusLost es una interacción de cliente.",
+      "tested": false
+    },
+    {
+      "id": "m2l6-personalizar-apariencia",
+      "module": 2,
+      "lesson": 6,
+      "lessonTitle": "¿Qué es un videojuego de rol?",
+      "name": "Personalizar apariencia del jugador al entrar",
+      "description": "Asigna una apariencia predefinida (sombrero, pelo, cara, camiseta, colores) a cada jugador al entrar, usando HumanoidDescription.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "PersonalizarApariencia",
+      "file": "scripts/m2l6/personalizar-apariencia.lua",
+      "requiredObjects": [],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de ServerScriptService: lógica global de PlayerAdded, no atada a ningún objeto.",
+      "tested": false
+    },
+    {
+      "id": "m2l6-definir-accesorios-equipables",
+      "module": 2,
+      "lesson": 6,
+      "lessonTitle": "¿Qué es un videojuego de rol?",
+      "name": "Definir accesorios equipables (gafas, sombrero)",
+      "description": "Construye accesorios (Accessory+Part+Attachment+SpecialMesh) y los deja listos en ReplicatedStorage para ser clonados.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "DefinirAccesoriosEquipables",
+      "file": "scripts/m2l6/definir-accesorios-equipables.lua",
+      "requiredObjects": [],
+      "conflictsWith": [],
+      "notes": "Inserta este script antes que 'Equipar accesorio'. Edita la tabla ACCESORIOS para añadir más (ej. alas).",
+      "tested": false
+    },
+    {
+      "id": "m2l6-equipar-accesorio",
+      "module": 2,
+      "lesson": 6,
+      "lessonTitle": "¿Qué es un videojuego de rol?",
+      "name": "Equipar accesorio al hacer clic",
+      "description": "Al hacer clic en una Part, clona y equipa un accesorio (definido por 'Definir accesorios equipables') en el jugador que hizo clic.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "EquiparAccesorio",
+      "file": "scripts/m2l6/equipar-accesorio.lua",
+      "requiredObjects": [
+        "Añade un ClickDetector a la Part que activará el accesorio.",
+        "Selecciona el ClickDetector (no la Part) antes de insertar.",
+        "Edita NOMBRE_ACCESORIO en el script tras insertarlo (ej. 'HPGlasses', 'lPHat')."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l6-quitar-accesorios",
+      "module": 2,
+      "lesson": 6,
+      "lessonTitle": "¿Qué es un videojuego de rol?",
+      "name": "Quitar todos los accesorios al hacer clic",
+      "description": "Al hacer clic, quita todos los accesorios equipados del jugador que hizo clic.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "QuitarAccesorios",
+      "file": "scripts/m2l6/quitar-accesorios.lua",
+      "requiredObjects": [
+        "Añade un ClickDetector a la Part del botón de 'quitar todo'.",
+        "Selecciona el ClickDetector (no la Part) antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Corrige un bug del material original (RemoveAccessories no acepta argumentos).",
+      "tested": false
+    },
+    {
+      "id": "m2l7-mover-npc-a-un-punto",
+      "module": 2,
+      "lesson": 7,
+      "lessonTitle": "Añadiendo personajes al juego",
+      "name": "Mover NPC a un punto (una vez)",
+      "description": "Mueve a un NPC hacia un punto de destino (GreenFlag) una sola vez, al insertarse.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "MoverNPCAUnPunto",
+      "file": "scripts/m2l7/mover-npc-a-un-punto.lua",
+      "requiredObjects": [
+        "Crea un Model anclado en Workspace llamado GreenFlag con PrimaryPart definido.",
+        "Selecciona el Model del NPC (con Humanoid, HumanoidRootPart sin Anchor) antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l7-patrulla-infinita",
+      "module": 2,
+      "lesson": 7,
+      "lessonTitle": "Añadiendo personajes al juego",
+      "name": "Patrulla infinita entre dos puntos",
+      "description": "El NPC camina indefinidamente entre dos banderas (GreenFlag/RedFlag), alternando destino.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "PatrullaInfinita",
+      "file": "scripts/m2l7/patrulla-infinita.lua",
+      "requiredObjects": [
+        "Crea dos Models anclados en Workspace, GreenFlag y RedFlag, cada uno con PrimaryPart definido.",
+        "Selecciona el Model del NPC (con Humanoid, HumanoidRootPart sin Anchor) antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l8-conectar-jugador",
+      "module": 2,
+      "lesson": 8,
+      "lessonTitle": "Creando un ataque en el juego",
+      "name": "Conectar jugador (registro global)",
+      "description": "Guarda en Data.Player al jugador que entra, para que otros scripts del sistema de combate sepan a quién perseguir.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "ConectarJugador",
+      "file": "scripts/m2l8/conectar-jugador.lua",
+      "requiredObjects": [
+        "Crea una Folder 'Data' en Workspace con un ObjectValue 'Player' dentro.",
+        "Selecciona la Folder 'Data' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Solo soporta un jugador a la vez. Parte del 'paquete' de combate de M2L8 (ver también generador-de-enemigos, perseguir-jugador, ataque-del-demonio) — no son piezas sueltas intercambiables.",
+      "tested": false
+    },
+    {
+      "id": "m2l8-generador-de-enemigos",
+      "module": 2,
+      "lesson": 8,
+      "lessonTitle": "Creando un ataque en el juego",
+      "name": "Generador de enemigos por proximidad",
+      "description": "Cuando un jugador se acerca, enciende el fuego del punto de spawn y clona enemigos (hasta 10) mientras el jugador siga cerca.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "GeneradorDeEnemigos",
+      "file": "scripts/m2l8/generador-de-enemigos.lua",
+      "requiredObjects": [
+        "Jerarquía en Workspace: Spawners(Folder)/Spawner(Model)/{Field(Part, este script), SpawnPoint(Part con Fire apagado)}, y Spawners/Quantity(IntValue=0).",
+        "Folder 'NPC' vacía en Workspace (destino de los clones).",
+        "Data/Player ya poblado (ver 'Conectar jugador').",
+        "Un Model 'Demon' en ServerStorage (la plantilla de enemigo).",
+        "Selecciona la Part 'Field' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Parte del 'paquete' de combate de M2L8 — requiere la jerarquía completa, no es un script aislado.",
+      "tested": false
+    },
+    {
+      "id": "m2l8-perseguir-jugador",
+      "module": 2,
+      "lesson": 8,
+      "lessonTitle": "Creando un ataque en el juego",
+      "name": "SeekEnemy: perseguir al jugador (Pathfinding)",
+      "description": "El enemigo persigue al jugador con PathfindingService si está cerca, o vuelve al punto de spawn si no.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "PerseguirJugador",
+      "file": "scripts/m2l8/perseguir-jugador.lua",
+      "requiredObjects": [
+        "En la plantilla 'Demon' (ServerStorage), renombra su Humanoid a DemonType.",
+        "Crea un IntValue 'WalkSpeed' hermano de Field/SpawnPoint (bajo el Model 'Spawner').",
+        "Selecciona el Model 'Demon' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Parte del 'paquete' de combate de M2L8.",
+      "tested": false
+    },
+    {
+      "id": "m2l8-ataque-del-demonio",
+      "module": 2,
+      "lesson": 8,
+      "lessonTitle": "Creando un ataque en el juego",
+      "name": "DemonAttack: combate cuerpo a cuerpo",
+      "description": "El enemigo hace daño al jugador al tocarlo con sus manos o su espada.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "AtaqueDelDemonio",
+      "file": "scripts/m2l8/ataque-del-demonio.lua",
+      "requiredObjects": [
+        "El Model 'Demon' debe tener Parts RightHand/LeftHand (esqueleto R15) y una espada (ClassicSword) como hijo directo.",
+        "Crea un IntValue 'AttackSpeed' hermano de Field/SpawnPoint (bajo el Model 'Spawner').",
+        "Selecciona el Model 'Demon' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Corrige 2 bugs del material original (findFirstChild minúscula, y el daño de espada conectado al brazo por error). Parte del 'paquete' de combate de M2L8.",
+      "tested": false
+    },
+    {
+      "id": "m2l9-tabla-de-clasificacion",
+      "module": 2,
+      "lesson": 9,
+      "lessonTitle": "Diseñando los logros del jugador",
+      "name": "Tabla de clasificación (leaderboard)",
+      "description": "Crea, para cada jugador, una carpeta leaderstats con columnas Coins y Exp, visibles en la tabla de jugadores nativa de Roblox.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "TablaDeClasificacion",
+      "file": "scripts/m2l9/tabla-de-clasificacion.lua",
+      "requiredObjects": [],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de ServerScriptService. También asigna Data.Player.Value — si ya usas 'Conectar jugador' de M2L8, es redundante (inofensivo, pero elige uno).",
+      "tested": false
+    },
+    {
+      "id": "m2l9-recolectar-moneda",
+      "module": 2,
+      "lesson": 9,
+      "lessonTitle": "Diseñando los logros del jugador",
+      "name": "CoinCollectScript: recolectar moneda",
+      "description": "Plantilla deshabilitada que suma 1 a leaderstats.Coins y destruye la moneda al tocarla.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CoinCollectScript",
+      "startDisabled": true,
+      "file": "scripts/m2l9/recolectar-moneda.lua",
+      "requiredObjects": [
+        "Selecciona la Part 'Coin' (dentro de una Folder 'CoinSpawner' en Workspace) antes de insertar.",
+        "Inserta este ANTES que 'Generar monedas' — se queda deshabilitado como plantilla."
+      ],
+      "conflictsWith": [],
+      "notes": "El nombre del Script debe ser exactamente CoinCollectScript — 'Generar monedas' lo busca por ese nombre.",
+      "tested": false
+    },
+    {
+      "id": "m2l9-generar-monedas",
+      "module": 2,
+      "lesson": 9,
+      "lessonTitle": "Diseñando los logros del jugador",
+      "name": "CreateCoinScript: generar monedas",
+      "description": "Cada 5-60 segundos genera una copia visual de moneda cerca, con una copia habilitada de CoinCollectScript dentro.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CreateCoinScript",
+      "file": "scripts/m2l9/generar-monedas.lua",
+      "requiredObjects": [
+        "Inserta primero 'CoinCollectScript' (recolectar-moneda) en la misma Part 'Coin', deshabilitado.",
+        "Selecciona la Part 'Coin' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l9-experiencia-al-derrotar",
+      "module": 2,
+      "lesson": 9,
+      "lessonTitle": "Diseñando los logros del jugador",
+      "name": "Experiencia al derrotar un demonio",
+      "description": "Cuando la salud del demonio llega a 0, suma 1 a leaderstats.Exp del jugador actual y lo destruye.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "ExperienciaAlDerrotar",
+      "file": "scripts/m2l9/experiencia-al-derrotar.lua",
+      "requiredObjects": [
+        "Requiere leaderstats.Exp (ver 'Tabla de clasificación') y el Humanoid del Demon renombrado a DemonType (M2L8).",
+        "Selecciona el Model 'Demon' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m2l9-barra-de-salud",
+      "module": 2,
+      "lesson": 9,
+      "lessonTitle": "Diseñando los logros del jugador",
+      "name": "Barra de salud",
+      "description": "Ajusta el ancho y color de una barra de vida (verde/amarillo/rojo) según el porcentaje de salud del jugador local.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "BarraDeSalud",
+      "file": "scripts/m2l9/barra-de-salud.lua",
+      "requiredObjects": [
+        "Crea un ScreenGui en StarterGui con un Frame 'Healthbar' que contenga 'Back' y 'Front' (mismo tamaño/posición).",
+        "Selecciona 'Healthbar' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Debe ser LocalScript: usa Players.LocalPlayer.",
       "tested": false
     }
   ]

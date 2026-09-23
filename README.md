@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v1.1.0)
+# Timeclub Academy — Plugin de Roblox Studio (v2.0.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -41,10 +41,12 @@ Cada entrada de `scripts` describe un script insertable:
 | `id` | Identificador único y estable del script. |
 | `module`, `lesson`, `lessonTitle` | A qué lección del curso pertenece. |
 | `name`, `description` | Lo que ve el profesor/alumno en el panel. |
-| `targetParent` | `"SelectedPart"` (dentro de la Part seleccionada, usa `script.Parent`) o `"Workspace"` (script independiente, para mecánicas que no pertenecen a una sola Part) — dónde se inserta el `Script`. |
-| `scriptInstanceName` | Nombre que tendrá el `Script` insertado (se usa también para detectar y reemplazar una inserción anterior). |
+| `targetParent` | `"SelectedPart"` (dentro del objeto seleccionado, usa `script.Parent` — funciona con cualquier Part, Folder, ClickDetector, Frame, etc.), `"Workspace"`, `"ServerScriptService"` o `"StarterPlayerScripts"` — dónde se inserta el script. `ServerScriptService`/`StarterPlayerScripts` solo se usan cuando la mecánica es global de verdad (ver [[feedback-plugin-architecture]] en la memoria del proyecto). |
+| `scriptClassName` | `"Script"` (por defecto si se omite) o `"LocalScript"` — algunas mecánicas de UI (botones, TextBox, barra de salud) requieren `LocalScript`. |
+| `scriptInstanceName` | Nombre que tendrá el script insertado (se usa también para detectar y reemplazar una inserción anterior, y a veces otros scripts lo buscan por este nombre exacto — ver `notes` de cada entrada). |
+| `startDisabled` | `true` si el script debe insertarse deshabilitado (plantillas que otro script clona, como `CoinCollectScript`). |
 | `file` | Ruta relativa del `.lua` dentro de este repo. |
-| `requiredObjects` | Lista de instrucciones en español de qué debe crear el alumno a mano antes de insertar (en v1.0 no hay modelos embebidos, solo scripts). |
+| `requiredObjects` | Lista de instrucciones en español de qué debe crear/seleccionar el alumno a mano antes de insertar (no hay modelos embebidos, solo scripts). |
 | `conflictsWith` | IDs de otros scripts que no deben coexistir en el mismo lugar (por ejemplo, dos scripts que controlan `Lighting.ClockTime` a la vez). |
 | `tested` | `false` hasta que alguien lo pruebe manualmente en Studio y lo confirme. El panel muestra "⚠ No probado" mientras tanto. |
 
@@ -58,13 +60,19 @@ Cada entrada de `scripts` describe un script insertable:
 
 ## Alcance de esta versión (v1.0)
 
-Incluye únicamente las 4 lecciones del Módulo 1 que tienen scripts documentados: **M1L4, M1L5, M1L7 y M1L9** (19 scripts en total, varios de ellos variantes ampliadas de M1L5: por toque, por clic, con partículas, con cambio de tamaño). Quedan fuera de v1.0, explícitamente:
+Incluye las lecciones de Módulo 1 y Módulo 2 con scripts documentados:
+- **Módulo 1**: M1L4, M1L5, M1L7, M1L9 (19 scripts).
+- **Módulo 2**: M1L2, M2L3, M2L4, M2L6, M2L7, M2L8, M2L9 (22 scripts).
 
-- Módulos 2 y 3 (aún no analizados).
-- Lecciones de M1 sin script (M1L1, M1L2, M1L3, M1L6): no necesitan catálogo.
-- M1L8 y M1L10: sus scripts adicionales viven en una plataforma externa (`mars.alg.academy`) a la que todavía no tenemos acceso al contenido real.
-- Modelos, Parts o efectos embebidos en el plugin — v1.0 es solo scripts + instrucciones de qué construir a mano.
+Quedan fuera, explícitamente:
+
+- **Módulo 3** (aún no analizado).
+- Lecciones sin script (M1L1/2/3/6, M2L1/M2L5/M2L10): no necesitan catálogo.
+- M1L8, M1L10 y la tienda de M2L10: sus scripts adicionales viven en plataformas externas (`mars.alg.academy` / `learn.alg.academy` tienda) a las que no tenemos acceso al contenido real.
+- Modelos, Parts o efectos embebidos en el plugin — es solo scripts + instrucciones de qué construir a mano.
 - Control de acceso por alumno (gating vía backend).
+
+**Nota sobre M2L8**: es un sistema de 4 scripts interdependientes (spawn de enemigos + IA de persecución + combate) que comparten una jerarquía específica de Folders — no son piezas sueltas intercambiables como el resto del catálogo. Ver `reportes/M2/M2L8-reporte.md` en el proyecto de análisis para el detalle completo, incluidos 2 bugs reales corregidos del material original.
 
 ## Próximos pasos (fuera de v1.0)
 
