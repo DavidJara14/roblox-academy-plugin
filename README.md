@@ -58,7 +58,7 @@ Cada entrada de `scripts` describe un script insertable:
 
 ## Alcance de esta versión (v1.0)
 
-Incluye únicamente las 4 lecciones del Módulo 1 que tienen scripts documentados: **M1L4, M1L5, M1L7 y M1L9** (14 scripts en total). Quedan fuera de v1.0, explícitamente:
+Incluye únicamente las 4 lecciones del Módulo 1 que tienen scripts documentados: **M1L4, M1L5, M1L7 y M1L9** (19 scripts en total, varios de ellos variantes ampliadas de M1L5: por toque, por clic, con partículas, con cambio de tamaño). Quedan fuera de v1.0, explícitamente:
 
 - Módulos 2 y 3 (aún no analizados).
 - Lecciones de M1 sin script (M1L1, M1L2, M1L3, M1L6): no necesitan catálogo.

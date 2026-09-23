@@ -9,6 +9,10 @@
 --
 -- Qué hace: enciende el fuego cuando el jugador toca la Part Area.
 --
+-- Nota: solo reacciona si lo que toca Area es un personaje (tiene un
+-- Humanoid) — así no se enciende por accidente si Area toca el suelo
+-- u otra Part.
+--
 -- Nota: este script NUNCA apaga el fuego de nuevo. Es la versión
 -- intermedia tal como aparece en la lección — para el comportamiento
 -- completo (se apaga al alejarse), usa
@@ -16,7 +20,12 @@
 
 local Workspace = game:GetService("Workspace")
 
-local function onAreaTouched()
+local function onAreaTouched(hit)
+	local character = hit.Parent
+	if not (character and character:FindFirstChild("Humanoid")) then
+		return
+	end
+
 	local fire = Workspace:FindFirstChild("Torch") and Workspace.Torch:FindFirstChild("Fire")
 	if fire then
 		fire.Enabled = true

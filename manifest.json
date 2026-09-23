@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updatedAt": "2026-09-22",
   "scripts": [
     {
@@ -24,7 +24,7 @@
       "lesson": 5,
       "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
       "name": "Cambiar Material al tocar",
-      "description": "Al tocar esta Part, cambia su Material a Neon. Funciona con cualquier Part, no necesita nombres especiales.",
+      "description": "Al tocar esta Part con el personaje, cambia su Material a Neon. Funciona con cualquier Part.",
       "targetParent": "SelectedPart",
       "scriptInstanceName": "CambiarMaterialAlTocar",
       "file": "scripts/m1l5/cambiar-material-al-tocar.lua",
@@ -40,7 +40,7 @@
       "lesson": 5,
       "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
       "name": "Cambiar Color al tocar",
-      "description": "Al tocar esta Part, cambia su color (BrickColor). Funciona con cualquier Part.",
+      "description": "Al tocar esta Part con el personaje, cambia su color (BrickColor). Funciona con cualquier Part.",
       "targetParent": "SelectedPart",
       "scriptInstanceName": "CambiarColorAlTocar",
       "file": "scripts/m1l5/cambiar-color-al-tocar.lua",
@@ -56,12 +56,45 @@
       "lesson": 5,
       "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
       "name": "Cambiar Transparencia al tocar",
-      "description": "Al tocar esta Part, cambia su Transparency a 0.5. Funciona con cualquier Part.",
+      "description": "Al tocar esta Part con el personaje, cambia su Transparency a 0.5. Funciona con cualquier Part.",
       "targetParent": "SelectedPart",
       "scriptInstanceName": "CambiarTransparenciaAlTocar",
       "file": "scripts/m1l5/cambiar-transparencia-al-tocar.lua",
       "requiredObjects": [
         "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l5-cambiar-color-y-tamano-al-tocar",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Cambiar Color y Tamaño al tocar (botón que se aprieta)",
+      "description": "Al tocar esta Part, cambia su color a amarillo y reduce su altura, simulando un botón físico que se aprieta.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CambiarColorYTamanoAlTocar",
+      "file": "scripts/m1l5/cambiar-color-y-tamano-al-tocar.lua",
+      "requiredObjects": [
+        "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l5-emitir-particulas-al-tocar",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Emitir partículas al tocar",
+      "description": "Al tocar esta Part, activa un efecto Sparkles que queda brillando de forma permanente.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "EmitirParticulasAlTocar",
+      "file": "scripts/m1l5/emitir-particulas-al-tocar.lua",
+      "requiredObjects": [
+        "Añade un efecto Sparkles como hijo de la Part (Model > Effects > Sparkles).",
+        "Selecciona esa misma Part antes de insertar el script."
       ],
       "conflictsWith": [],
       "tested": false
@@ -81,6 +114,57 @@
       ],
       "conflictsWith": [],
       "notes": "Antes se llamaba 'Dynamite'; se renombró porque el comportamiento actual no incluye ningún efecto de explosión, solo mata al personaje.",
+      "tested": false
+    },
+    {
+      "id": "m1l5-cambiar-material-al-click",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Cambiar Material al hacer clic (con ClickDetector)",
+      "description": "Variante con ClickDetector: cambia el Material a Neon cuando el jugador hace clic en la Part con el mouse, en vez de tocarla caminando.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CambiarMaterialAlClick",
+      "file": "scripts/m1l5/cambiar-material-al-click.lua",
+      "requiredObjects": [
+        "Añade un ClickDetector como hijo de la Part.",
+        "Selecciona esa misma Part antes de insertar el script."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l5-cambiar-color-al-click",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Cambiar Color al hacer clic (con ClickDetector)",
+      "description": "Variante con ClickDetector: cambia el color cuando el jugador hace clic en la Part con el mouse.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CambiarColorAlClick",
+      "file": "scripts/m1l5/cambiar-color-al-click.lua",
+      "requiredObjects": [
+        "Añade un ClickDetector como hijo de la Part.",
+        "Selecciona esa misma Part antes de insertar el script."
+      ],
+      "conflictsWith": [],
+      "tested": false
+    },
+    {
+      "id": "m1l5-cambiar-transparencia-al-click",
+      "module": 1,
+      "lesson": 5,
+      "lessonTitle": "Expandiendo la funcionalidad del juego usando scripts",
+      "name": "Cambiar Transparencia al hacer clic (con ClickDetector)",
+      "description": "Variante con ClickDetector: cambia la transparencia cuando el jugador hace clic en la Part con el mouse.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "CambiarTransparenciaAlClick",
+      "file": "scripts/m1l5/cambiar-transparencia-al-click.lua",
+      "requiredObjects": [
+        "Añade un ClickDetector como hijo de la Part.",
+        "Selecciona esa misma Part antes de insertar el script."
+      ],
+      "conflictsWith": [],
       "tested": false
     },
     {

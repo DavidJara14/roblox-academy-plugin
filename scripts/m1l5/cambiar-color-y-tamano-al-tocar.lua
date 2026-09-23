@@ -1,25 +1,27 @@
--- Cambiar Transparencia al tocar — Módulo 1, Lección 5
+-- Cambiar Color y Tamaño al tocar ("botón que se aprieta") — Módulo 1, Lección 5
 --
 -- CÓMO USARLO:
 -- 1. Selecciona en el Explorer la Part que quieras convertir en botón.
 -- 2. Pulsa "Insertar" en el plugin.
 -- 3. Dale a Play y toca la Part con tu personaje.
 --
--- Qué hace: al tocar esta Part, cambia su Transparency
--- (0 = opaco, 1 = invisible).
+-- Qué hace: al tocar esta Part, cambia su color a amarillo Y reduce su
+-- altura — simula el efecto de un botón físico que se aprieta al
+-- pisarlo.
 --
 -- Nota: solo reacciona si lo que la toca es un personaje (tiene un
--- Humanoid) — así no se activa por accidente al tocar el suelo u otra
--- Part cuando empieza la partida.
+-- Humanoid).
 
-local NUEVA_TRANSPARENCIA = 0.5
+local NUEVO_COLOR = BrickColor.new(Color3.fromRGB(255, 255, 0))
+local NUEVO_TAMANO = Vector3.new(0.1, 5, 5)
 
 local boton = script.Parent
 
 local function onBotonTocado(hit)
 	local character = hit.Parent
 	if character and character:FindFirstChild("Humanoid") then
-		boton.Transparency = NUEVA_TRANSPARENCIA
+		boton.BrickColor = NUEVO_COLOR
+		boton.Size = NUEVO_TAMANO
 	end
 end
 

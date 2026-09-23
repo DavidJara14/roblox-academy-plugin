@@ -9,6 +9,9 @@
 --
 -- Qué hace: enciende el fuego cuando el jugador toca Area, y lo apaga
 -- (con 3 segundos de retraso) cuando el jugador deja de tocarla.
+--
+-- Nota: solo reacciona si lo que toca/deja de tocar Area es un
+-- personaje (tiene un Humanoid).
 
 local Workspace = game:GetService("Workspace")
 
@@ -19,14 +22,25 @@ local function getFire()
 	return torch and torch:FindFirstChild("Fire")
 end
 
-local function onAreaTouched()
+local function isCharacter(hit)
+	local character = hit.Parent
+	return character and character:FindFirstChild("Humanoid") ~= nil
+end
+
+local function onAreaTouched(hit)
+	if not isCharacter(hit) then
+		return
+	end
 	local fire = getFire()
 	if fire then
 		fire.Enabled = true
 	end
 end
 
-local function onAreaTouchEnded()
+local function onAreaTouchEnded(hit)
+	if not isCharacter(hit) then
+		return
+	end
 	task.wait(SEGUNDOS_ANTES_DE_APAGAR)
 	local fire = getFire()
 	if fire then
