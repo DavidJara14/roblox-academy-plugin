@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "4.0.0",
   "updatedAt": "2026-09-23",
   "scripts": [
     {
@@ -933,6 +933,215 @@
       ],
       "conflictsWith": [],
       "notes": "El nombre del Script debe ser exactamente 'GunDamage' — 'Bala: crear en el servidor' lo busca por ese nombre. Requiere 'Leaderboard PvP' para que el registro de Killer tenga efecto.",
+      "tested": false
+    },
+    {
+      "id": "m4l1-color-script",
+      "module": 4,
+      "lesson": 1,
+      "lessonTitle": "¿Qué son los simuladores?",
+      "name": "ColorScript: resaltar botón al pasar el mouse",
+      "description": "Cambia la opacidad y el color de un ImageButton al pasar el mouse por encima, y lo restaura al salir.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ColorScript",
+      "file": "scripts/m4l1/color-script.lua",
+      "requiredObjects": [
+        "Selecciona un ImageButton (por ejemplo 'SpawnCar' o 'DeleteCar') antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Insértalo en cada botón que quieras resaltar (se puede repetir en varios).",
+      "tested": false
+    },
+    {
+      "id": "m4l1-mostrar-menu",
+      "module": 4,
+      "lesson": 1,
+      "lessonTitle": "¿Qué son los simuladores?",
+      "name": "Mostrar/ocultar menú de coches",
+      "description": "Al pulsar el botón 'SpawnCar', muestra u oculta el Frame del menú de selección de coches.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "MostrarMenu",
+      "file": "scripts/m4l1/mostrar-menu.lua",
+      "requiredObjects": [
+        "Crea un ScreenGui con un ImageButton 'SpawnCar' y un Frame (el menú de coches), ambos hijos directos del ScreenGui.",
+        "Selecciona el ScreenGui antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "",
+      "tested": false
+    },
+    {
+      "id": "m4l1-car-spawner",
+      "module": 4,
+      "lesson": 1,
+      "lessonTitle": "¿Qué son los simuladores?",
+      "name": "CarSpawner: instanciar/eliminar el coche del jugador",
+      "description": "Clona el coche pedido por el jugador desde ServerStorage.Cars, lo coloca junto a él, y limpia el coche anterior al pedir otro, salir o reaparecer.",
+      "targetParent": "ServerScriptService",
+      "scriptInstanceName": "CarSpawner",
+      "file": "scripts/m4l1/car-spawner.lua",
+      "requiredObjects": [
+        "Crea una carpeta 'Cars' en ServerStorage con los coches disponibles dentro, renombrados Car1, Car2, etc.",
+        "Crea dos RemoteEvent en ReplicatedStorage: 'SpawnCar' y 'DeleteCar'."
+      ],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de ServerScriptService: lógica global de red (RemoteEvent), no atada a ningún objeto. Requiere 'Configurar botón de coche' y 'Configurar botón DeleteCar' del lado del cliente.",
+      "tested": false
+    },
+    {
+      "id": "m4l1-configurar-delete-car",
+      "module": 4,
+      "lesson": 1,
+      "lessonTitle": "¿Qué son los simuladores?",
+      "name": "Configurar botón DeleteCar",
+      "description": "Muestra el botón DeleteCar cuando el jugador tiene un coche activo; al pulsarlo, lo baja del asiento y pide al servidor eliminar su coche.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ConfigurarDeleteCar",
+      "file": "scripts/m4l1/configurar-delete-car.lua",
+      "requiredObjects": [
+        "Requiere 'CarSpawner' (ServerScriptService) y los RemoteEvent SpawnCar/DeleteCar ya insertados.",
+        "Haz invisible el botón 'DeleteCar' (Visible = false) antes de insertar.",
+        "Selecciona el botón 'DeleteCar' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "",
+      "tested": false
+    },
+    {
+      "id": "m4l1-configurar-boton-car",
+      "module": 4,
+      "lesson": 1,
+      "lessonTitle": "¿Qué son los simuladores?",
+      "name": "Configurar botón de coche (Car1, Car2...)",
+      "description": "Al pulsar el botón, oculta el menú y pide al servidor instanciar ese coche, reemplazando el que el jugador tuviera activo.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ConfigurarBotonCar",
+      "file": "scripts/m4l1/configurar-boton-car.lua",
+      "requiredObjects": [
+        "Requiere 'CarSpawner' (ServerScriptService) y los RemoteEvent SpawnCar/DeleteCar ya insertados.",
+        "El botón debe llamarse EXACTAMENTE igual que el coche en ServerStorage.Cars (por ejemplo 'Car1').",
+        "Selecciona el botón (dentro del Frame del menú) antes de insertar. Repite para cada coche."
+      ],
+      "conflictsWith": [],
+      "notes": "El nombre del botón (script.Parent.Name) se usa como nombre del coche a pedir — debe coincidir exactamente con su entrada en ServerStorage.Cars.",
+      "tested": false
+    },
+    {
+      "id": "m4l2-iniciar-carrera",
+      "module": 4,
+      "lesson": 2,
+      "lessonTitle": "Diseñando un mapa para carreras",
+      "name": "BeginRace: iniciar la cuenta regresiva",
+      "description": "Cuando un coche toca esta Part, guarda la hora de inicio de la carrera, se desactiva, y activa el script de la meta.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "BeginRace",
+      "file": "scripts/m4l2/iniciar-carrera.lua",
+      "requiredObjects": [
+        "Crea una Part anclada llamada 'Start' en la pista, con CanCollide = false.",
+        "Crea también una Part anclada 'Finish' (ver 'EndRace: detener la cuenta regresiva').",
+        "Selecciona 'Start' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Corrige un bug real del original: creaba un NumberValue nuevo en cada vuelta en vez de reemplazar el anterior, lo que rompía el cálculo de tiempo a partir de la 2ª vuelta.",
+      "tested": false
+    },
+    {
+      "id": "m4l2-terminar-carrera",
+      "module": 4,
+      "lesson": 2,
+      "lessonTitle": "Diseñando un mapa para carreras",
+      "name": "EndRace: detener la cuenta regresiva",
+      "description": "Cuando un coche toca esta Part, calcula e imprime el tiempo de carrera, y tras 3 segundos reactiva el inicio para una nueva vuelta.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "EndRace",
+      "startDisabled": true,
+      "file": "scripts/m4l2/terminar-carrera.lua",
+      "requiredObjects": [
+        "Crea una Part anclada llamada 'Finish' en la pista, con CanCollide = false.",
+        "Inserta primero 'BeginRace' en la Part 'Start'.",
+        "Selecciona 'Finish' antes de insertar. Déjalo deshabilitado (ya viene así)."
+      ],
+      "conflictsWith": [],
+      "notes": "Debe insertarse deshabilitado — 'BeginRace' lo habilita cuando corresponde. Habilitarlo a mano antes de tiempo rompe el flujo.",
+      "tested": false
+    },
+    {
+      "id": "m4l2-temporizador",
+      "module": 4,
+      "lesson": 2,
+      "lessonTitle": "Diseñando un mapa para carreras",
+      "name": "Timer: mostrar el tiempo de carrera en pantalla",
+      "description": "Mientras la carrera está en curso, actualiza en vivo un TextLabel con el tiempo transcurrido.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "Timer",
+      "file": "scripts/m4l2/temporizador.lua",
+      "requiredObjects": [
+        "Inserta primero 'BeginRace' (en Start) y 'EndRace' (en Finish, deshabilitado).",
+        "Crea un ScreenGui con Frame > TextLabel para mostrar el tiempo.",
+        "Selecciona el ScreenGui antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Depende de los nombres exactos 'Start'/'Finish' en Workspace y 'BeginRace'/'EndRace' como nombre de instancia de esos scripts.",
+      "tested": false
+    },
+    {
+      "id": "m4l3-controlador-todoterreno",
+      "module": 4,
+      "lesson": 3,
+      "lessonTitle": "Creando tu propio todoterreno",
+      "name": "Controlador del vehículo todoterreno (ATV)",
+      "description": "Traduce el input del VehicleSeat en velocidad angular de los 4 motores (CylindricalConstraint) para avanzar, girar y autoenderezarse si se voltea.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "ControladorTodoterreno",
+      "file": "scripts/m4l3/controlador-todoterreno.lua",
+      "requiredObjects": [
+        "Construye el modelo 'QuadBike': VehicleSeat soldado a 'Base', y dos modelos 'rear_axle'/'front_axle', cada uno con wheel_axle > CylindricalConstraint_l/_r configurados como motor (AngularActuatorType = Motor).",
+        "Selecciona el modelo 'QuadBike' antes de insertar."
+      ],
+      "conflictsWith": [],
+      "notes": "Corrige 2 detalles del original: un wait() redundante que procesaba el input a mitad de velocidad al girar, y comentarios que tenían SteerFloat/ThrottleFloat al revés (el código en sí siempre los usó bien). Requiere construir la jerarquía física de Attachments/CylindricalConstraint a mano — no hay modelos embebidos en el catálogo.",
+      "tested": false
+    },
+    {
+      "id": "m4l4-audio-player",
+      "module": 4,
+      "lesson": 4,
+      "lessonTitle": "Presentando nuestros simuladores de carreras",
+      "name": "AudioPlayer: módulo reutilizable de audio",
+      "description": "Expone preloadAudio(tabla) y playAudio(nombre) para precargar y reproducir sonidos por nombre desde cualquier LocalScript.",
+      "targetParent": "SelectedPart",
+      "scriptClassName": "ModuleScript",
+      "scriptInstanceName": "AudioPlayer",
+      "file": "scripts/m4l4/audio-player.lua",
+      "requiredObjects": [
+        "En el Explorer, selecciona el servicio 'ReplicatedStorage' e inserta este script directamente ahí (no dentro de una Part)."
+      ],
+      "conflictsWith": [],
+      "notes": "El nombre del script debe ser exactamente 'AudioPlayer' — 'Cargar y reproducir música de fondo' lo busca por ese nombre con require().",
+      "tested": false
+    },
+    {
+      "id": "m4l4-reproducir-audio",
+      "module": 4,
+      "lesson": 4,
+      "lessonTitle": "Presentando nuestros simuladores de carreras",
+      "name": "Cargar y reproducir música de fondo",
+      "description": "Cada jugador precarga y reproduce, al entrar, la canción indicada por un assetId configurable.",
+      "targetParent": "StarterPlayerScripts",
+      "scriptClassName": "LocalScript",
+      "scriptInstanceName": "ReproducirAudio",
+      "file": "scripts/m4l4/reproducir-audio.lua",
+      "requiredObjects": [
+        "Inserta primero 'AudioPlayer' (ModuleScript) en ReplicatedStorage.",
+        "Elige una canción del Toolbox de audio y copia su assetId."
+      ],
+      "conflictsWith": [],
+      "notes": "Caso legítimo de StarterPlayerScripts: cada jugador necesita reproducir su propio audio. Edita AUDIO_ID (y opcionalmente NOMBRE_CANCION) en el script tras insertarlo, con el id de tu canción elegida.",
       "tested": false
     }
   ]
