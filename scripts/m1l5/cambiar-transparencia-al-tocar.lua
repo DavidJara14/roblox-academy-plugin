@@ -8,9 +8,8 @@
 -- Qué hace: al tocar esta Part, cambia su Transparency
 -- (0 = opaco, 1 = invisible).
 --
--- Nota: solo reacciona si lo que la toca es un personaje (tiene un
--- Humanoid) — así no se activa por accidente al tocar el suelo u otra
--- Part cuando empieza la partida.
+-- Nota: reacciona a cualquier cosa que toque la Part, no solo a
+-- personajes — se mantiene simple a propósito.
 --
 -- Para experimentar: prueba NUEVA_TRANSPARENCIA = 1 (invisible) y
 -- combínalo con CanCollide = false para hacer una Part que "desaparece"
@@ -22,7 +21,7 @@ local boton = script.Parent
 
 local function onBotonTocado(hit)
 	local character = hit.Parent
-	if character and character:FindFirstChild("Humanoid") then
+	if character then
 		boton.Transparency = NUEVA_TRANSPARENCIA
 	end
 end

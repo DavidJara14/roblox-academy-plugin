@@ -12,10 +12,6 @@ local checkpointPart = script.Parent
 
 local function onCheckpointTouched(hit)
 	local character = hit.Parent
-	if not (character and character:FindFirstChild("Humanoid")) then
-		return
-	end
-
 	local player = game.Players:GetPlayerFromCharacter(character)
 	if not player then
 		return

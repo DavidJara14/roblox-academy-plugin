@@ -12,8 +12,8 @@
 -- una propiedad Transparency propia — por eso, para mostrarlo, se
 -- cambia su propiedad Parent en vez de intentar volverlo transparente.
 --
--- Nota: solo reacciona si lo que toca la Part disparadora es un
--- personaje (tiene un Humanoid).
+-- Nota: reacciona a cualquier cosa que toque la Part disparadora, no
+-- solo a personajes — se mantiene simple a propósito.
 --
 -- Para experimentar: prueba usar otro Model del Toolbox, o cambiar el
 -- tamaño/forma de esta Part para que el área de activación sea más
@@ -23,10 +23,7 @@ local modelo = game.ServerStorage.SorpresaModel
 
 local function onTriggerTouched(hit)
 	local character = hit.Parent
-	if not (character and character:FindFirstChild("Humanoid")) then
-		return
-	end
-	if modelo.Parent ~= game.Workspace then
+	if character and modelo.Parent ~= game.Workspace then
 		modelo.Parent = game.Workspace
 	end
 end

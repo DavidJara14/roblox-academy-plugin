@@ -1,5 +1,5 @@
 {
-  "version": "5.2.0",
+  "version": "5.3.0",
   "updatedAt": "2026-09-24",
   "scripts": [
     {
@@ -250,12 +250,12 @@
       "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
       "name": "Fuego que se enciende al acercarse",
       "description": "Enciende el fuego cuando el jugador toca una zona de detección. Nunca se apaga (versión intermedia de la lección).",
-      "targetParent": "Workspace",
+      "targetParent": "SelectedPart",
       "scriptInstanceName": "FuegoAlAcercarse",
       "file": "scripts/m1l9/fuego-al-acercarse.lua",
       "requiredObjects": [
         "Crea una Part transparente y anclada en Workspace llamada Area.",
-        "Crea una Part en Workspace llamada Torch, con un efecto Fire como hijo."
+        "Selecciona la Part de la antorcha (debe tener un efecto Fire como hijo) antes de insertar."
       ],
       "conflictsWith": [
         "m1l9-fuego-por-tiempo",
@@ -271,12 +271,12 @@
       "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
       "name": "Fuego que se enciende y apaga según proximidad",
       "description": "Enciende el fuego cuando el jugador toca una zona de detección, y lo apaga (con 3 segundos de retraso) al alejarse.",
-      "targetParent": "Workspace",
+      "targetParent": "SelectedPart",
       "scriptInstanceName": "FuegoAlAcercarseYAlejarse",
       "file": "scripts/m1l9/fuego-al-acercarse-y-alejarse.lua",
       "requiredObjects": [
         "Crea una Part transparente y anclada en Workspace llamada Area.",
-        "Crea una Part en Workspace llamada Torch, con un efecto Fire como hijo."
+        "Selecciona la Part de la antorcha (debe tener un efecto Fire como hijo) antes de insertar."
       ],
       "conflictsWith": [
         "m1l9-fuego-por-tiempo",

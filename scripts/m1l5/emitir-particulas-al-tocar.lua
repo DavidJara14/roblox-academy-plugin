@@ -11,8 +11,8 @@
 -- con el personaje, se activa (Enabled = true) y la Part queda
 -- "brillando" con partículas de forma permanente.
 --
--- Nota: solo reacciona si lo que la toca es un personaje (tiene un
--- Humanoid).
+-- Nota: reacciona a cualquier cosa que toque la Part, no solo a
+-- personajes — se mantiene simple a propósito.
 --
 -- Para experimentar: en las propiedades del ParticleEmitter prueba
 -- cambiar Rate (cuántas partículas salen por segundo), Speed (qué tan
@@ -25,7 +25,7 @@ particulas.Enabled = false
 
 local function onParteTocada(hit)
 	local character = hit.Parent
-	if character and character:FindFirstChild("Humanoid") then
+	if character then
 		particulas.Enabled = true
 	end
 end

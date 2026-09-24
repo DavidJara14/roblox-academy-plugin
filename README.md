@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.2.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.3.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -91,7 +91,9 @@ Quedan fuera, explícitamente:
 
 **v5.2.0 — David aprobó M1L5 y M1L7 tras probarlos; feedback sobre M1L9**: `m1l9-aparicion-de-objeto` rediseñado — el Model ahora se coloca directamente dentro de ServerStorage desde el inicio (ya no hay que "esconderlo" moviéndolo al arrancar), y el script pasa a vivir dentro de la Part disparadora (`script.Parent`, `targetParent: SelectedPart`) en vez de ser un script independiente en Workspace que buscaba la Part por nombre — ya no importa cómo se llame el disparador. **Nueva convención**: en vez de `local X = game:GetService("NombreDelServicio")`, se usa `game.NombreDelServicio` directamente donde se necesite (más simple de leer para los chicos) — aplicado a todos los scripts de Módulo 1 que tocaban `ServerStorage`, `Workspace`, `Lighting` o `Players`.
 
-## Próximos pasos (fuera de v5.2.0)
+**v5.3.0 — David pidió simplificar las verificaciones de Humanoid**: los scripts que solo usaban `character:FindFirstChild("Humanoid")` como filtro (sin usar el Humanoid para nada más) ahora solo comprueban que `hit.Parent` exista — reaccionan a cualquier contacto físico, no solo a personajes, a cambio de un código más corto y fácil de leer para los alumnos. Esto **no** aplica a scripts que sí necesitan el objeto Humanoid para funcionar (`m1l5-insta-kill`, `m1l9-dano-por-fuego`: llaman a `humanoid.Health`/`humanoid:TakeDamage()`, ahí el chequeo sigue siendo necesario). `m1l9-fuego-al-acercarse` y `m1l9-fuego-al-acercarse-y-alejarse` además pasaron a vivir dentro de la Part de la antorcha (`script.Parent.Fire`) en vez de buscar "Torch" por nombre en Workspace.
+
+## Próximos pasos (fuera de v5.3.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.

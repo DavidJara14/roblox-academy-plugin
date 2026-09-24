@@ -12,9 +12,9 @@
 --   BrickColor.new(1020)           -- por número
 --   BrickColor.new(0, 255, 0)      -- por combinación RGB
 --
--- Nota: solo reacciona si lo que la toca es un personaje (tiene un
--- Humanoid) — así no se activa por accidente al tocar el suelo u otra
--- Part cuando empieza la partida.
+-- Nota: reacciona a cualquier cosa que toque la Part (un personaje,
+-- otra Part, incluso el suelo si esta Part cae sobre él) — no filtra
+-- solo personajes, para mantener el script simple.
 --
 -- Para experimentar: prueba otros valores de NUEVO_COLOR, o combínalo
 -- con Material (por ejemplo Enum.Material.Neon) para que el color
@@ -26,7 +26,7 @@ local boton = script.Parent
 
 local function onBotonTocado(hit)
 	local character = hit.Parent
-	if character and character:FindFirstChild("Humanoid") then
+	if character then
 		boton.BrickColor = NUEVO_COLOR
 	end
 end
