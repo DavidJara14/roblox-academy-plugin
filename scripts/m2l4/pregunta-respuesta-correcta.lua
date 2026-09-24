@@ -7,14 +7,17 @@
 -- 1. Añade un ParticleEmitter (apagado) a la Part de respuesta correcta.
 -- 2. Selecciona esa Part e inserta este script.
 --
--- Qué hace: si el personaje toca esta Part, enciende su ParticleEmitter.
+-- Qué hace: al tocar esta Part, enciende su ParticleEmitter.
+--
+-- Nota: reacciona a cualquier cosa que toque la Part, no solo a
+-- personajes — se mantiene simple a propósito.
 
 local respuesta = script.Parent
-local particulas = respuesta:WaitForChild("ParticleEmitter")
+local particulas = respuesta.ParticleEmitter
 
 local function onTocada(hit)
-	local humanoid = hit.Parent and hit.Parent:FindFirstChild("Humanoid")
-	if humanoid then
+	local character = hit.Parent
+	if character then
 		particulas.Enabled = true
 	end
 end

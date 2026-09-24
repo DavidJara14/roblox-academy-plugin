@@ -13,15 +13,11 @@
 -- Qué hace: esconde el Crystal al iniciar (lo mueve a ServerStorage) y lo
 -- revela cuando el jugador elige la rama DialogChoice2 > DialogChoice3.
 
-local ServerStorage = game:GetService("ServerStorage")
-local Workspace = game:GetService("Workspace")
+local crystal = game.Workspace.Crystal
+crystal.Parent = game.ServerStorage
 
-local crystal = Workspace:WaitForChild("Crystal")
-crystal.Parent = ServerStorage
-
-local npc = Workspace:WaitForChild("QuestNPC")
-local head = npc:WaitForChild("Head")
-local dialog = head:WaitForChild("Dialog")
+local npc = game.Workspace.QuestNPC
+local dialog = npc.Head.Dialog
 
 local function onDialogChoiceSelected(player, choice)
 	if choice == dialog.DialogChoice1 then
@@ -29,7 +25,7 @@ local function onDialogChoiceSelected(player, choice)
 	elseif choice == dialog.DialogChoice2 then
 		print("Dialogue 2 running")
 	elseif choice == dialog.DialogChoice2.DialogChoice3 then
-		crystal.Parent = Workspace
+		crystal.Parent = game.Workspace
 		print("Take the crystal")
 	end
 end

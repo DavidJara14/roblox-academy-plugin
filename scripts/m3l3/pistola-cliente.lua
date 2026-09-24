@@ -26,8 +26,9 @@
 -- aquí se usa "mouse.Hit.Position", su equivalente actual.
 
 local gun = script.Parent
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local remoteEvent = ReplicatedStorage:WaitForChild("ShotEvent")
+-- WaitForChild aquí sí es necesario: el RemoteEvent puede no haber
+-- replicado todavía cuando este script arranca.
+local remoteEvent = game.ReplicatedStorage:WaitForChild("ShotEvent")
 
 local RELOAD_TIME = 1
 local reload = false

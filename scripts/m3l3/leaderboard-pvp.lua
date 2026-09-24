@@ -13,8 +13,6 @@
 -- que guarda quién lo mató por última vez. Al morir, suma 1 a sus
 -- Deaths y 1 al Frag de quien lo mató.
 
-local Players = game:GetService("Players")
-
 local function onPlayerJoin(player)
 	local leaderstats = Instance.new("Folder")
 	leaderstats.Name = "leaderstats"
@@ -38,7 +36,7 @@ local function onPlayerJoin(player)
 		local humanoid = character:WaitForChild("Humanoid")
 		humanoid.Died:Connect(function()
 			deaths.Value += 1
-			local killerPlayer = Players:FindFirstChild(killer.Value)
+			local killerPlayer = game.Players:FindFirstChild(killer.Value)
 			if killerPlayer then
 				killerPlayer.leaderstats.Frag.Value += 1
 			end
@@ -46,4 +44,4 @@ local function onPlayerJoin(player)
 	end)
 end
 
-Players.PlayerAdded:Connect(onPlayerJoin)
+game.Players.PlayerAdded:Connect(onPlayerJoin)

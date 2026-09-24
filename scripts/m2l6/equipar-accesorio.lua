@@ -16,8 +16,10 @@
 
 local NOMBRE_ACCESORIO = "HPGlasses"
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local accesorio = ReplicatedStorage:WaitForChild(NOMBRE_ACCESORIO)
+-- WaitForChild aquí sí es necesario: el accesorio lo crea en tiempo de
+-- ejecución "definir-accesorios-equipables.lua", puede que todavía no
+-- exista cuando este script arranca.
+local accesorio = game.ReplicatedStorage:WaitForChild(NOMBRE_ACCESORIO)
 
 script.Parent.MouseClick:Connect(function(player)
 	player.Character.Humanoid:AddAccessory(accesorio:Clone())

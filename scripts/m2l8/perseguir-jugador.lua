@@ -17,7 +17,6 @@
 
 local DISTANCIA_PERSECUCION = 50
 
-local PathfindingService = game:GetService("PathfindingService")
 local demonHumanoid = script.Parent.DemonType
 
 while true do
@@ -28,7 +27,7 @@ while true do
 	if distancia < DISTANCIA_PERSECUCION then
 		demonHumanoid.WalkSpeed = script.Parent.Parent.WalkSpeed.Value
 
-		local path = PathfindingService:CreatePath({
+		local path = game.PathfindingService:CreatePath({
 			AgentRadius = 2,
 			AgentHeight = 5,
 			AgentCanJump = false,

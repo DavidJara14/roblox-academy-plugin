@@ -25,10 +25,9 @@
 -- volar libremente en Workspace. Aquí la bala se parenta a Workspace y
 -- los efectos se parentan a la propia bala.
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ServerStorage = game:GetService("ServerStorage")
-local Debris = game:GetService("Debris")
-local remoteEvent = ReplicatedStorage:WaitForChild("ShotEvent")
+-- WaitForChild aquí sí es necesario: el RemoteEvent puede no haber
+-- replicado todavía cuando este script arranca.
+local remoteEvent = game.ReplicatedStorage:WaitForChild("ShotEvent")
 
 local BULLET_SPEED = 800
 
@@ -46,7 +45,7 @@ remoteEvent.OnServerEvent:Connect(function(player, gunPos, mousePos)
 	local fire = Instance.new("Fire")
 	fire.Parent = bullet
 
-	local damageScript = ServerStorage:FindFirstChild("GunDamage"):Clone()
+	local damageScript = game.ServerStorage:FindFirstChild("GunDamage"):Clone()
 	damageScript.Disabled = false
 	damageScript.Parent = bullet
 
@@ -58,5 +57,5 @@ remoteEvent.OnServerEvent:Connect(function(player, gunPos, mousePos)
 	bullet.Parent = workspace
 	bullet.AssemblyLinearVelocity = bullet.CFrame.LookVector * BULLET_SPEED
 
-	Debris:AddItem(bullet, 1000 / BULLET_SPEED)
+	game.Debris:AddItem(bullet, 1000 / BULLET_SPEED)
 end)

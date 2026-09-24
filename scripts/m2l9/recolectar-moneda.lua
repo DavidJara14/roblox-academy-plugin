@@ -15,10 +15,6 @@
 -- leaderstats.Coins del jugador y destruye la moneda.
 
 script.Parent.Touched:Connect(function(hit)
-	local humanoid = hit.Parent and hit.Parent:FindFirstChild("Humanoid")
-	if not humanoid then
-		return
-	end
 	local player = game.Players:GetPlayerFromCharacter(hit.Parent)
 	if not player then
 		return

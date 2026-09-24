@@ -11,8 +11,6 @@
 -- con dos columnas (Coins, Exp) que Roblox muestra automáticamente en
 -- la tabla de jugadores nativa.
 
-local Players = game:GetService("Players")
-
 local function leaderboardSetup(player)
 	game.Workspace.Data.Player.Value = player
 
@@ -31,4 +29,4 @@ local function leaderboardSetup(player)
 	exp.Parent = leaderstats
 end
 
-Players.PlayerAdded:Connect(leaderboardSetup)
+game.Players.PlayerAdded:Connect(leaderboardSetup)

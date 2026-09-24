@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.3.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.4.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -93,7 +93,9 @@ Quedan fuera, explícitamente:
 
 **v5.3.0 — David pidió simplificar las verificaciones de Humanoid**: los scripts que solo usaban `character:FindFirstChild("Humanoid")` como filtro (sin usar el Humanoid para nada más) ahora solo comprueban que `hit.Parent` exista — reaccionan a cualquier contacto físico, no solo a personajes, a cambio de un código más corto y fácil de leer para los alumnos. Esto **no** aplica a scripts que sí necesitan el objeto Humanoid para funcionar (`m1l5-insta-kill`, `m1l9-dano-por-fuego`: llaman a `humanoid.Health`/`humanoid:TakeDamage()`, ahí el chequeo sigue siendo necesario). `m1l9-fuego-al-acercarse` y `m1l9-fuego-al-acercarse-y-alejarse` además pasaron a vivir dentro de la Part de la antorcha (`script.Parent.Fire`) en vez de buscar "Torch" por nombre en Workspace.
 
-## Próximos pasos (fuera de v5.3.0)
+**v5.4.0 — barrido retroactivo de las 3 convenciones a Módulos 2 y 3**: David pidió (2026-09-24) aplicar de una vez, a todo M2/M3, las tres convenciones que fue confirmando sobre Módulo 1 (evitar `WaitForChild` para objetos ya colocados a mano, `game.Servicio` en vez de `GetService`, y simplificar los chequeos de Humanoid que son solo un filtro). 16 scripts actualizados. `WaitForChild` se mantuvo donde sí hace falta (RemoteEvents creados en tiempo de ejecución, personaje cargando) — cada caso quedó comentado con una nota explicando por qué. Módulos 4 y 5 quedan pendientes para un barrido similar.
+
+## Próximos pasos (fuera de v5.4.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.

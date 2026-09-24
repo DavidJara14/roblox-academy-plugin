@@ -12,7 +12,7 @@
 -- Qué hace: mueve al NPC hacia GreenFlag una sola vez, al insertarse.
 
 local npc = script.Parent
-local humanoid = npc:WaitForChild("Humanoid")
-local destino = game.Workspace:WaitForChild("GreenFlag")
+local humanoid = npc.Humanoid
+local destino = game.Workspace.GreenFlag
 
 humanoid:MoveTo(destino.PrimaryPart.Position)

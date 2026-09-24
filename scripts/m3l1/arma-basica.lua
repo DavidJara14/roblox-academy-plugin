@@ -53,7 +53,7 @@ local function disparar()
 	bullet.BrickColor = BrickColor.Random()
 	bullet.Parent = gun
 
-	game:GetService("Debris"):AddItem(bullet, 1)
+	game.Debris:AddItem(bullet, 1)
 
 	task.wait(1)
 	bomb.CanCollide = true

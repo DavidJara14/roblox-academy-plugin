@@ -14,9 +14,9 @@
 local PATROL_DELAY = 2
 
 local npc = script.Parent
-local humanoid = npc:WaitForChild("Humanoid")
-local pointA = game.Workspace:WaitForChild("GreenFlag")
-local pointB = game.Workspace:WaitForChild("RedFlag")
+local humanoid = npc.Humanoid
+local pointA = game.Workspace.GreenFlag
+local pointB = game.Workspace.RedFlag
 local siguienteDestino = pointA
 
 while task.wait(PATROL_DELAY) do

@@ -10,13 +10,16 @@
 --
 -- Qué hace: al tocar Part1, mueve al personaje completo a la posición de
 -- Part2 (elevado 10 studs para no incrustarlo en el suelo).
+--
+-- Nota: reacciona a cualquier cosa que toque Part1, no solo a
+-- personajes — se mantiene simple a propósito.
 
 local startPoint = script.Parent.Part1
 local endPoint = script.Parent.Part2
 
 local function onStartPointTouched(hit)
 	local character = hit.Parent
-	if character and character:FindFirstChild("Humanoid") then
+	if character then
 		character:MoveTo(endPoint.Position + Vector3.new(0, 10, 0))
 	end
 end

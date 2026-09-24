@@ -13,8 +13,6 @@
 -- Qué hace: construye cada accesorio como Accessory+Part+Attachment+
 -- SpecialMesh y lo deja listo en ReplicatedStorage para ser clonado.
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
 local ACCESORIOS = {
 	{
 		nombre = "HPGlasses",
@@ -55,7 +53,7 @@ local function crearAccesorio(datos)
 	mesh.TextureId = datos.textureId
 	mesh.Parent = handle
 
-	accesorio.Parent = ReplicatedStorage
+	accesorio.Parent = game.ReplicatedStorage
 end
 
 for _, datos in ACCESORIOS do
