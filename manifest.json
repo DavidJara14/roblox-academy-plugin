@@ -1,5 +1,5 @@
 {
-  "version": "5.5.0",
+  "version": "5.6.0",
   "updatedAt": "2026-09-24",
   "scripts": [
     {
@@ -32,7 +32,7 @@
         "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l5-cambiar-color-al-tocar",
@@ -48,7 +48,7 @@
         "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l5-cambiar-transparencia-al-tocar",
@@ -64,7 +64,7 @@
         "Selecciona la Part a la que quieras darle este comportamiento antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l5-cambiar-color-y-tamano-al-tocar",
@@ -81,7 +81,7 @@
         "Tamaño recomendado: (5, 1, 5), anclada, apoyada justo encima de una superficie."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l5-emitir-particulas-al-tocar",
@@ -98,7 +98,7 @@
         "Selecciona esa misma Part antes de insertar el script."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l5-insta-kill",
@@ -115,7 +115,7 @@
       ],
       "conflictsWith": [],
       "notes": "",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l5-cambiar-material-al-click",
@@ -132,7 +132,7 @@
         "Selecciona esa misma Part antes de insertar el script."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l5-cambiar-color-al-click",
@@ -149,7 +149,7 @@
         "Selecciona esa misma Part antes de insertar el script."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l5-cambiar-transparencia-al-click",
@@ -166,7 +166,7 @@
         "Selecciona esa misma Part antes de insertar el script."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l7-ciclo-dia-noche",
@@ -183,7 +183,7 @@
         "m1l7-luz-de-calle-nocturna"
       ],
       "notes": "No lo insertes junto con 'Luz de calle automática': ambos controlan Lighting.ClockTime y competirían entre sí.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l7-parpadeo-de-luces",
@@ -201,7 +201,7 @@
         "Selecciona el Model/Folder que agrupa las 3 Parts antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l7-luz-de-calle-nocturna",
@@ -222,7 +222,7 @@
         "m1l7-ciclo-dia-noche"
       ],
       "notes": "No lo insertes junto con 'Ciclo día/noche': este script ya incluye su propio ciclo de ClockTime.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l9-fuego-por-tiempo",
@@ -241,7 +241,7 @@
         "m1l9-fuego-al-acercarse",
         "m1l9-fuego-al-acercarse-y-alejarse"
       ],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l9-fuego-al-acercarse",
@@ -262,7 +262,7 @@
         "m1l9-fuego-al-acercarse-y-alejarse"
       ],
       "notes": "Considera usar 'Fuego que se enciende y apaga según proximidad' en su lugar, que es la versión completa de esta misma idea.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l9-fuego-al-acercarse-y-alejarse",
@@ -282,7 +282,7 @@
         "m1l9-fuego-por-tiempo",
         "m1l9-fuego-al-acercarse"
       ],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l9-dano-por-fuego",
@@ -298,7 +298,7 @@
         "Selecciona la Part de la antorcha (con su efecto Fire) antes de insertar este script."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l9-aparicion-de-objeto",
@@ -315,7 +315,7 @@
         "Selecciona la Part que quieras usar como disparador (cualquier nombre sirve) antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m1l9-destruccion-de-objeto",
@@ -331,7 +331,7 @@
         "Selecciona la Part que quieras que desaparezca al tocarla antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l2-revelar-cristal-en-dialogo",
