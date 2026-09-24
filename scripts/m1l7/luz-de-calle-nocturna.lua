@@ -17,8 +17,6 @@
 -- el ciclo sea más rápido o más lento. En las propiedades del SpotLight
 -- prueba también Brightness, Range y Color.
 
-local Lighting = game:GetService("Lighting")
-
 local HORA_ENCENDIDO = 16
 local HORA_APAGADO = 6
 local INCREMENTO_POR_TICK = 0.1
@@ -28,7 +26,7 @@ local spotLight = script.Parent.Sphere.SpotLight
 local horaDelDia = 0
 
 while true do
-	Lighting.ClockTime = horaDelDia
+	game.Lighting.ClockTime = horaDelDia
 	horaDelDia += INCREMENTO_POR_TICK
 	if horaDelDia > 24 then
 		horaDelDia = 0

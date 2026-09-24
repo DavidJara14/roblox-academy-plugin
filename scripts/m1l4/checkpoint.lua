@@ -8,9 +8,6 @@
 -- (por ejemplo, tras caer o morir), su personaje se teletransporta al
 -- último checkpoint que tocó, en vez de al punto de aparición original.
 
-local ServerStorage = game:GetService("ServerStorage")
-local Players = game:GetService("Players")
-
 local checkpointPart = script.Parent
 
 local function onCheckpointTouched(hit)
@@ -19,16 +16,16 @@ local function onCheckpointTouched(hit)
 		return
 	end
 
-	local player = Players:GetPlayerFromCharacter(character)
+	local player = game.Players:GetPlayerFromCharacter(character)
 	if not player then
 		return
 	end
 
-	local checkpointData = ServerStorage:FindFirstChild("CheckpointData")
+	local checkpointData = game.ServerStorage:FindFirstChild("CheckpointData")
 	if not checkpointData then
 		checkpointData = Instance.new("Model")
 		checkpointData.Name = "CheckpointData"
-		checkpointData.Parent = ServerStorage
+		checkpointData.Parent = game.ServerStorage
 	end
 
 	local playerCheckpoint = checkpointData:FindFirstChild(tostring(player.UserId))

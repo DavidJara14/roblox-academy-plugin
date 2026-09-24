@@ -21,19 +21,17 @@
 -- Para experimentar: en las propiedades del Fire prueba Size, Heat y
 -- Color para que la llama se vea distinta.
 
-local Workspace = game:GetService("Workspace")
-
 local function onAreaTouched(hit)
 	local character = hit.Parent
 	if not (character and character:FindFirstChild("Humanoid")) then
 		return
 	end
 
-	local fire = Workspace:FindFirstChild("Torch") and Workspace.Torch:FindFirstChild("Fire")
+	local fire = game.Workspace:FindFirstChild("Torch") and game.Workspace.Torch:FindFirstChild("Fire")
 	if fire then
 		fire.Enabled = true
 	end
 end
 
-local area = Workspace.Area
+local area = game.Workspace.Area
 area.Touched:Connect(onAreaTouched)

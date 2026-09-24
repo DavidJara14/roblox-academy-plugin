@@ -18,15 +18,13 @@
 -- Brightness, Ambient y ColorShift_Top/Bottom para cambiar cómo se ve
 -- la luz durante el ciclo.
 
-local Lighting = game:GetService("Lighting")
-
 local INCREMENTO_POR_TICK = 0.01
 local SEGUNDOS_ENTRE_TICKS = 2
 
 local horaDelDia = 0
 
 while true do
-	Lighting.ClockTime = horaDelDia
+	game.Lighting.ClockTime = horaDelDia
 	horaDelDia += INCREMENTO_POR_TICK
 	if horaDelDia > 24 then
 		horaDelDia = 0

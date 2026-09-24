@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.1.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.2.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -89,7 +89,9 @@ Quedan fuera, explícitamente:
 
 **v5.1.0 — correcciones de David tras probar Módulo 1 en Studio**: `m1l5-cambiar-color-y-tamano-al-tocar` cambiaba el tamaño en el eje incorrecto (achataba X en vez de Y); `m1l5-emitir-particulas-al-tocar` pedía un efecto "Sparkles" que no existe, es "ParticleEmitter"; `m1l5-trampa-mortal` se renombró a `m1l5-insta-kill`; `m1l7-luz-de-calle-nocturna` y `m1l7-parpadeo-de-luces` pasaron de ser scripts independientes en Workspace (con `Workspace:WaitForChild(nombre)`) a vivir dentro de un Model/Folder que agrupa sus Parts, usando `script.Parent` — mismo patrón preferido que el resto del catálogo. Además, **nueva convención**: los scripts ya no usan `WaitForChild` para acceder a objetos que el alumno ya creó a mano antes de insertar (siempre están presentes, así que agregar `WaitForChild` solo añade complejidad innecesaria para los chicos) — se reserva `WaitForChild` únicamente para casos con una demora real (el personaje cargando, un RemoteEvent replicándose desde el servidor, `leaderstats` creado por otro script). Todos los scripts de Módulo 1 ahora incluyen una sugerencia de "Para experimentar" con propiedades para que los alumnos prueben cambiar (Brightness, Rate, colores, etc.).
 
-## Próximos pasos (fuera de v5.1.0)
+**v5.2.0 — David aprobó M1L5 y M1L7 tras probarlos; feedback sobre M1L9**: `m1l9-aparicion-de-objeto` rediseñado — el Model ahora se coloca directamente dentro de ServerStorage desde el inicio (ya no hay que "esconderlo" moviéndolo al arrancar), y el script pasa a vivir dentro de la Part disparadora (`script.Parent`, `targetParent: SelectedPart`) en vez de ser un script independiente en Workspace que buscaba la Part por nombre — ya no importa cómo se llame el disparador. **Nueva convención**: en vez de `local X = game:GetService("NombreDelServicio")`, se usa `game.NombreDelServicio` directamente donde se necesite (más simple de leer para los chicos) — aplicado a todos los scripts de Módulo 1 que tocaban `ServerStorage`, `Workspace`, `Lighting` o `Players`.
+
+## Próximos pasos (fuera de v5.2.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.

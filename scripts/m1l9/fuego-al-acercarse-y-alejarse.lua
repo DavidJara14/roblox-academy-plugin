@@ -16,12 +16,10 @@
 -- Para experimentar: cambia SEGUNDOS_ANTES_DE_APAGAR, o en las
 -- propiedades del Fire prueba Size, Heat y Color.
 
-local Workspace = game:GetService("Workspace")
-
 local SEGUNDOS_ANTES_DE_APAGAR = 3
 
 local function getFire()
-	local torch = Workspace:FindFirstChild("Torch")
+	local torch = game.Workspace:FindFirstChild("Torch")
 	return torch and torch:FindFirstChild("Fire")
 end
 
@@ -51,6 +49,6 @@ local function onAreaTouchEnded(hit)
 	end
 end
 
-local area = Workspace.Area
+local area = game.Workspace.Area
 area.Touched:Connect(onAreaTouched)
 area.TouchEnded:Connect(onAreaTouchEnded)

@@ -1,6 +1,6 @@
 {
-  "version": "5.1.0",
-  "updatedAt": "2026-09-23",
+  "version": "5.2.0",
+  "updatedAt": "2026-09-24",
   "scripts": [
     {
       "id": "m1l4-checkpoint",
@@ -306,13 +306,13 @@
       "lesson": 9,
       "lessonTitle": "Creando un mundo propio: sorpresas y obstáculos",
       "name": "Aparición de un objeto al tocar una Part",
-      "description": "Esconde un Model al iniciar el juego y lo hace reaparecer cuando el jugador toca una Part disparadora.",
-      "targetParent": "Workspace",
+      "description": "Al tocar esta Part, un Model guardado en ServerStorage (escondido desde el inicio) se mueve a Workspace y aparece.",
+      "targetParent": "SelectedPart",
       "scriptInstanceName": "AparicionDeObjeto",
       "file": "scripts/m1l9/aparicion-de-objeto.lua",
       "requiredObjects": [
-        "Inserta un Model en Workspace (por ejemplo desde el Toolbox) y renómbralo: SorpresaModel.",
-        "Crea una Part disparadora en Workspace y renómbrala: SorpresaTrigger."
+        "Pon un Model (por ejemplo del Toolbox) directamente dentro de ServerStorage, nombrado exactamente SorpresaModel.",
+        "Selecciona la Part que quieras usar como disparador (cualquier nombre sirve) antes de insertar."
       ],
       "conflictsWith": [],
       "tested": false
