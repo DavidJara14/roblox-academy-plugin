@@ -8,8 +8,8 @@
 --
 -- Qué hace: al tocar esta Part, cambia su Material a Neon.
 --
--- Nota: reacciona a cualquier cosa que toque la Part, no solo a
--- personajes — se mantiene simple a propósito.
+-- Nota: solo reacciona si lo que la toca es un personaje (tiene un
+-- Humanoid).
 --
 -- Para experimentar: prueba otros materiales, por ejemplo
 -- Enum.Material.Ice, Enum.Material.Wood o Enum.Material.ForceField.
@@ -20,7 +20,8 @@ local boton = script.Parent
 
 local function onBotonTocado(hit)
 	local character = hit.Parent
-	if character then
+	local humanoid = character:FindFirstChild("Humanoid")
+	if humanoid then
 		boton.Material = NUEVO_MATERIAL
 	end
 end

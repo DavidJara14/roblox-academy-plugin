@@ -11,12 +11,12 @@
 --    Crystal1, Crystal2, Crystal3.
 -- 3. Selecciona la Folder "Teleports" e inserta este script.
 --
--- Qué hace: esconde Part1 (transparente y elevada) hasta que se toquen
--- los 3 cristales; cada cristal tocado se destruye y cuenta; al llegar
--- a 3, Part1 vuelve a su posición y se hace visible.
+-- Qué hace: esconde Part1 (transparente y elevada) hasta que el jugador
+-- toque los 3 cristales; cada cristal tocado se destruye y cuenta; al
+-- llegar a 3, Part1 vuelve a su posición y se hace visible.
 --
--- Nota: cada cristal reacciona a cualquier cosa que lo toque, no solo a
--- personajes — se mantiene simple a propósito.
+-- Nota: cada cristal solo reacciona si lo toca un personaje (tiene un
+-- Humanoid).
 
 local part1 = script.Parent.Part1
 part1.Transparency = 1
@@ -26,14 +26,14 @@ local cristalesRecogidos = 0
 
 local function onCristalTocado(cristal, hit)
 	local character = hit.Parent
-	if not character then
-		return
-	end
-	cristal:Destroy()
-	cristalesRecogidos += 1
-	if cristalesRecogidos == 3 then
-		part1.Position = part1.Position - Vector3.new(0, 100, 0)
-		part1.Transparency = 0
+	local humanoid = character:FindFirstChild("Humanoid")
+	if humanoid then
+		cristal:Destroy()
+		cristalesRecogidos += 1
+		if cristalesRecogidos == 3 then
+			part1.Position = part1.Position - Vector3.new(0, 100, 0)
+			part1.Transparency = 0
+		end
 	end
 end
 

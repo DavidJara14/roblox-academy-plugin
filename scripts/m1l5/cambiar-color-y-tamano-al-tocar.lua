@@ -9,8 +9,8 @@
 -- altura — simula el efecto de un botón físico que se aprieta al
 -- pisarlo.
 --
--- Nota: reacciona a cualquier cosa que toque la Part, no solo a
--- personajes — se mantiene simple a propósito.
+-- Nota: solo reacciona si lo que la toca es un personaje (tiene un
+-- Humanoid).
 --
 -- Tamaño recomendado para la Part antes de insertar: (5, 1, 5), anclada
 -- y apoyada justo encima de una superficie (para que se note el efecto
@@ -28,7 +28,8 @@ local boton = script.Parent
 
 local function onBotonTocado(hit)
 	local character = hit.Parent
-	if character then
+	local humanoid = character:FindFirstChild("Humanoid")
+	if humanoid then
 		boton.BrickColor = NUEVO_COLOR
 		boton.Size = NUEVO_TAMANO
 	end

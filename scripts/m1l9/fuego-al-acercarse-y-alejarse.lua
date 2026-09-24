@@ -8,6 +8,9 @@
 -- Qué hace: enciende el fuego cuando el jugador toca Area, y lo apaga
 -- (con 3 segundos de retraso) cuando el jugador deja de tocarla.
 --
+-- Nota: solo reacciona si lo que toca/deja de tocar Area es un
+-- personaje (tiene un Humanoid).
+--
 -- Para experimentar: cambia SEGUNDOS_ANTES_DE_APAGAR, o en las
 -- propiedades del Fire prueba Size, Heat y Color.
 
@@ -18,14 +21,16 @@ local area = game.Workspace.Area
 
 local function onAreaTouched(hit)
 	local character = hit.Parent
-	if character then
+	local humanoid = character:FindFirstChild("Humanoid")
+	if humanoid then
 		fire.Enabled = true
 	end
 end
 
 local function onAreaTouchEnded(hit)
 	local character = hit.Parent
-	if character then
+	local humanoid = character:FindFirstChild("Humanoid")
+	if humanoid then
 		task.wait(SEGUNDOS_ANTES_DE_APAGAR)
 		fire.Enabled = false
 	end

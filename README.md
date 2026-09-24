@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.4.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.5.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -95,7 +95,17 @@ Quedan fuera, explícitamente:
 
 **v5.4.0 — barrido retroactivo de las 3 convenciones a Módulos 2 y 3**: David pidió (2026-09-24) aplicar de una vez, a todo M2/M3, las tres convenciones que fue confirmando sobre Módulo 1 (evitar `WaitForChild` para objetos ya colocados a mano, `game.Servicio` en vez de `GetService`, y simplificar los chequeos de Humanoid que son solo un filtro). 16 scripts actualizados. `WaitForChild` se mantuvo donde sí hace falta (RemoteEvents creados en tiempo de ejecución, personaje cargando) — cada caso quedó comentado con una nota explicando por qué. Módulos 4 y 5 quedan pendientes para un barrido similar.
 
-## Próximos pasos (fuera de v5.4.0)
+**v5.5.0 — corrección: el chequeo de Humanoid se mantiene, solo cambia de forma**: la v5.3.0 había malinterpretado el pedido de David y quitó el filtro de Humanoid por completo en los scripts donde era solo un filtro. La corrección real: el filtro se queda, pero en formato plano —
+```lua
+local character = hit.Parent
+local humanoid = character:FindFirstChild("Humanoid")
+if humanoid then
+	-- acción
+end
+```
+— en vez de `if not (character and character:FindFirstChild("Humanoid")) then return end`. 12 scripts corregidos de vuelta a filtrar por Humanoid (con este formato), en M1L5, M1L9 y M2L3/L4.
+
+## Próximos pasos (fuera de v5.5.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.

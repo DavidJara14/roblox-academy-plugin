@@ -7,19 +7,21 @@
 --
 -- Qué hace: enciende el fuego cuando el jugador toca la Part Area.
 --
--- Nota: este script NUNCA apaga el fuego de nuevo. Es la versión
--- intermedia tal como aparece en la lección — para el comportamiento
+-- Nota: solo reacciona si lo que toca Area es un personaje (tiene un
+-- Humanoid). Este script NUNCA apaga el fuego de nuevo — es la versión
+-- intermedia tal como aparece en la lección; para el comportamiento
 -- completo (se apaga al alejarse), usa
 -- "fuego-al-acercarse-y-alejarse.lua" en su lugar.
 --
 -- Para experimentar: en las propiedades del Fire prueba Size, Heat y
 -- Color para que la llama se vea distinta.
 
+local fire = script.Parent.Fire
+
 local function onAreaTouched(hit)
 	local character = hit.Parent
-	local fire = script.Parent.Fire
-
-	if character and fire then
+	local humanoid = character:FindFirstChild("Humanoid")
+	if humanoid then
 		fire.Enabled = true
 	end
 end
