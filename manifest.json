@@ -1,5 +1,5 @@
 {
-  "version": "5.9.0",
+  "version": "5.10.0",
   "updatedAt": "2026-09-26",
   "scripts": [
     {
@@ -472,7 +472,7 @@
       "requiredObjects": [],
       "conflictsWith": [],
       "notes": "Caso legítimo de ServerScriptService: lógica global de PlayerAdded, no atada a ningún objeto.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l6-definir-accesorios-equipables",
@@ -487,7 +487,7 @@
       "requiredObjects": [],
       "conflictsWith": [],
       "notes": "Inserta este script antes que 'Equipar accesorio'. Edita la tabla ACCESORIOS para añadir más (ej. alas).",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l6-equipar-accesorio",
@@ -505,7 +505,7 @@
         "Edita NOMBRE_ACCESORIO en el script tras insertarlo (ej. 'HPGlasses', 'lPHat')."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l6-quitar-accesorios",
@@ -513,7 +513,7 @@
       "lesson": 6,
       "lessonTitle": "¿Qué es un videojuego de rol?",
       "name": "Quitar todos los accesorios al hacer clic",
-      "description": "Al hacer clic, quita todos los accesorios equipados del jugador que hizo clic.",
+      "description": "Al hacer clic, quita los accesorios equipados (gafas, sombreros, etc.) del jugador que hizo clic, sin tocarle el cabello.",
       "targetParent": "SelectedPart",
       "scriptInstanceName": "QuitarAccesorios",
       "file": "scripts/m2l6/quitar-accesorios.lua",
@@ -522,8 +522,8 @@
         "Selecciona el ClickDetector (no la Part) antes de insertar."
       ],
       "conflictsWith": [],
-      "notes": "Corrige un bug del material original (RemoveAccessories no acepta argumentos).",
-      "tested": false
+      "notes": "Corrige 2 bugs del material original: RemoveAccessories no acepta argumentos (siempre quitaba todo), y quitar TODO incluía el cabello (es un Accessory más). Ahora recorre los accesorios uno por uno y salta los de tipo Hair.",
+      "tested": true
     },
     {
       "id": "m2l7-mover-npc-a-un-punto",
