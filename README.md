@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.14.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.15.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -123,7 +123,9 @@ end
 
 **v5.14.0 — bug real en "Generar muros perimetrales"**: David reportó que los muros no se veían bien al probar M3L2. Se confirmó inspeccionando directamente las propiedades de las Parts generadas en su sesión de Studio: los 516 muros tenían `Orientation = (0,0,0)` — el material original nunca rotaba los muros del norte/sur, así que su lado largo (eje Z, 20 studs) quedaba perpendicular a la línea del muro en vez de a lo largo de ella (se veía como una fila de rejas sueltas, no una pared sólida). Los del este/oeste ya estaban bien por casualidad, porque su eje largo coincidía con su propia dirección. Corregido rotando los muros del norte/sur 90° en Y.
 
-## Próximos pasos (fuera de v5.14.0)
+**v5.15.0 — M3L2 confirmado**: David probó el fix de los muros y aprobó los 3 scripts de M3L2 (`generar-laberinto`, `generar-muros`, `arma-con-objetivo`).
+
+## Próximos pasos (fuera de v5.15.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.

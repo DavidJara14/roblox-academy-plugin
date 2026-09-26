@@ -1,5 +1,5 @@
 {
-  "version": "5.14.0",
+  "version": "5.15.0",
   "updatedAt": "2026-09-26",
   "scripts": [
     {
@@ -822,7 +822,7 @@
       ],
       "conflictsWith": [],
       "notes": "Corre una sola vez al iniciar el juego (no un bucle). Úsalo junto con 'Generar muros perimetrales' en la misma Folder.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l2-generar-muros",
@@ -840,7 +840,7 @@
       ],
       "conflictsWith": [],
       "notes": "Corrige un bug real del material original: nunca rotaba los muros del norte/sur, así que quedaban perpendiculares a la línea del muro (una fila de rejas sueltas) en vez de formar una pared sólida. Los del este/oeste ya estaban bien (su eje largo coincidía de casualidad con su dirección).",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l2-arma-con-objetivo",
@@ -863,7 +863,7 @@
         "m3l3-pistola-cliente"
       ],
       "notes": "Reemplaza a \"Arma básica\" (misma Tool, versión con daño) — no las uses juntas. Corrige un bug real: la versión original clonaba una plantilla de ServerStorage, imposible desde un LocalScript (ServerStorage nunca es visible para el cliente). Para multijugador real usa \"Pistola (disparo en red)\" de M3L3.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l3-leaderboard-pvp",
