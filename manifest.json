@@ -1,5 +1,5 @@
 {
-  "version": "5.13.0",
+  "version": "5.14.0",
   "updatedAt": "2026-09-26",
   "scripts": [
     {
@@ -839,7 +839,7 @@
         "Selecciona la misma Folder de mapa donde insertaste 'Generar laberinto' (no hay orden obligatorio entre ambos)."
       ],
       "conflictsWith": [],
-      "notes": "",
+      "notes": "Corrige un bug real del material original: nunca rotaba los muros del norte/sur, así que quedaban perpendiculares a la línea del muro (una fila de rejas sueltas) en vez de formar una pared sólida. Los del este/oeste ya estaban bien (su eje largo coincidía de casualidad con su dirección).",
       "tested": false
     },
     {

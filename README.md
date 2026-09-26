@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.13.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.14.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -121,7 +121,9 @@ end
 
 **v5.13.0 — Módulo 3 en marcha, primer hallazgo aclarado (no era bug)**: David empezó a probar M3 en un proyecto de Studio nuevo y dedicado (recomendado porque el laberinto/muros de M3L2 generan un mapa de ~500x500 studs centrado en el origen, que hubiera arrasado con todo lo de M1/M2). Aprobó `brick` y `magic-wand`. Reportó que "Arma básica" dispara "en la dirección incorrecta" — se confirmó que el `BodyThrust` empuja en el eje local +X (lateral) más impulso hacia arriba, **tal cual el material original** (el reporte de análisis de M3L1 ya documentaba "fuerza que empuja la bala en el eje X") — no apunta hacia donde mira el jugador a propósito, es una demo simple de física antes de introducir apuntado real en M3L3. David confirmó que se deja así. Los 3 scripts de M3L1 quedan `"tested": true`.
 
-## Próximos pasos (fuera de v5.13.0)
+**v5.14.0 — bug real en "Generar muros perimetrales"**: David reportó que los muros no se veían bien al probar M3L2. Se confirmó inspeccionando directamente las propiedades de las Parts generadas en su sesión de Studio: los 516 muros tenían `Orientation = (0,0,0)` — el material original nunca rotaba los muros del norte/sur, así que su lado largo (eje Z, 20 studs) quedaba perpendicular a la línea del muro en vez de a lo largo de ella (se veía como una fila de rejas sueltas, no una pared sólida). Los del este/oeste ya estaban bien por casualidad, porque su eje largo coincidía con su propia dirección. Corregido rotando los muros del norte/sur 90° en Y.
+
+## Próximos pasos (fuera de v5.14.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.
