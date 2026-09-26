@@ -1,5 +1,5 @@
 {
-  "version": "5.11.0",
+  "version": "5.12.0",
   "updatedAt": "2026-09-26",
   "scripts": [
     {
@@ -575,7 +575,7 @@
       ],
       "conflictsWith": [],
       "notes": "Solo soporta un jugador a la vez. Parte del 'paquete' de combate de M2L8 (ver también generador-de-enemigos, perseguir-jugador, ataque-del-demonio) — no son piezas sueltas intercambiables.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l8-generador-de-enemigos",
@@ -596,7 +596,7 @@
       ],
       "conflictsWith": [],
       "notes": "Parte del 'paquete' de combate de M2L8 — requiere la jerarquía completa, no es un script aislado.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l8-perseguir-jugador",
@@ -615,7 +615,7 @@
       ],
       "conflictsWith": [],
       "notes": "Parte del 'paquete' de combate de M2L8.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l8-ataque-del-demonio",
@@ -636,7 +636,7 @@
         "m2l8-ataque-del-demonio-con-bate"
       ],
       "notes": "Corrige 2 bugs del material original (findFirstChild minúscula, y el daño de espada conectado al brazo por error). Parte del 'paquete' de combate de M2L8.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l8-ataque-del-demonio-con-bate",
@@ -657,7 +657,7 @@
         "m2l8-ataque-del-demonio"
       ],
       "notes": "Pedido por David (2026-09-26): una variante visual de 'DemonAttack' con un arma que se ve y se mueve, en vez de una espada estática. El bate (mango + cabeza, Parts tipo Cylinder) se reposiciona cada fotograma relativo al HumanoidRootPart en vez de soldarse al hueso de la mano, para no depender de la orientación exacta del rig — ajusta la constante BATE_OFFSET si no queda bien alineado con tu modelo.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l9-tabla-de-clasificacion",
@@ -672,7 +672,7 @@
       "requiredObjects": [],
       "conflictsWith": [],
       "notes": "Caso legítimo de ServerScriptService. También asigna Data.Player.Value — si ya usas 'Conectar jugador' de M2L8, es redundante (inofensivo, pero elige uno).",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l9-recolectar-moneda",
@@ -691,7 +691,7 @@
       ],
       "conflictsWith": [],
       "notes": "El nombre del Script debe ser exactamente CoinCollectScript — 'Generar monedas' lo busca por ese nombre.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l9-generar-monedas",
@@ -708,7 +708,7 @@
         "Selecciona la Part 'Coin' antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l9-experiencia-al-derrotar",
@@ -725,7 +725,7 @@
         "Selecciona el Model 'Demon' antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l9-barra-de-salud",
@@ -744,7 +744,7 @@
       ],
       "conflictsWith": [],
       "notes": "Debe ser LocalScript: usa Players.LocalPlayer.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l1-brick",
