@@ -1,5 +1,5 @@
 {
-  "version": "5.8.0",
+  "version": "5.9.0",
   "updatedAt": "2026-09-26",
   "scripts": [
     {
@@ -351,7 +351,7 @@
       ],
       "conflictsWith": [],
       "notes": "Debe ser LocalScript en StarterPlayerScripts: cada jugador necesita su propia interacción de diálogo.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l3-teletransporte",
@@ -368,7 +368,7 @@
         "Selecciona la Folder (no las Parts) antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l4-pregunta-respuesta-incorrecta",
@@ -384,7 +384,7 @@
         "Selecciona la Part que representa una respuesta incorrecta."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l4-pregunta-respuesta-correcta",
@@ -401,7 +401,7 @@
         "Selecciona esa misma Part antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l4-teletransporte-con-objetos",
@@ -419,7 +419,7 @@
         "Selecciona la Folder 'Teleports' antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l4-mostrar-ventana-de-codigo",
@@ -438,7 +438,7 @@
       ],
       "conflictsWith": [],
       "notes": "Debe ser LocalScript: MouseButton1Click solo funciona en StarterGui como LocalScript.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l4-validar-codigo-secreto",
@@ -457,7 +457,7 @@
       ],
       "conflictsWith": [],
       "notes": "Debe ser LocalScript: TextBox.FocusLost es una interacción de cliente.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l6-personalizar-apariencia",
