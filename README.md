@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.10.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.11.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -115,7 +115,9 @@ end
 
 **v5.10.0 — M2L6 confirmado, bug real de `RemoveAccessories` corregido**: los 4 scripts de M2L6 (`personalizar-apariencia`, `definir-accesorios-equipables`, `equipar-accesorio`, `quitar-accesorios`) probados y aprobados por David. Al probar "Quitar todos los accesorios", `Humanoid:RemoveAccessories()` también quitaba el cabello del jugador — el cabello es técnicamente un `Accessory` más (tipo `Hair`) para Roblox, así que un "quitar todo" literal se lo llevaba también. Corregido recorriendo `Humanoid:GetAccessories()` y destruyendo solo los que no sean de tipo `Hair`.
 
-## Próximos pasos (fuera de v5.10.0)
+**v5.11.0 — M2L7 confirmado; nueva variante de M2L8 con arma animada**: David aprobó los 2 scripts de M2L7 (`mover-npc-a-un-punto`, `patrulla-infinita`). Además pidió una alternativa a "DemonAttack" que se vea golpear: se añadió `m2l8-ataque-del-demonio-con-bate`, que construye un bate de béisbol con dos Parts (mango + cabeza), lo balancea sin parar junto a la mano derecha del Demon, y hace daño al tocar al jugador — sin depender de una espada pre-armada ni de la orientación exacta del hueso de la mano (se reposiciona relativo al `HumanoidRootPart` en cada fotograma). Es una alternativa a "DemonAttack" (`conflictsWith`), no un añadido junto a ella.
+
+## Próximos pasos (fuera de v5.11.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.

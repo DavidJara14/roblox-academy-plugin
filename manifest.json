@@ -1,5 +1,5 @@
 {
-  "version": "5.10.0",
+  "version": "5.11.0",
   "updatedAt": "2026-09-26",
   "scripts": [
     {
@@ -540,7 +540,7 @@
         "Selecciona el Model del NPC (con Humanoid, HumanoidRootPart sin Anchor) antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l7-patrulla-infinita",
@@ -557,7 +557,7 @@
         "Selecciona el Model del NPC (con Humanoid, HumanoidRootPart sin Anchor) antes de insertar."
       ],
       "conflictsWith": [],
-      "tested": false
+      "tested": true
     },
     {
       "id": "m2l8-conectar-jugador",
@@ -632,8 +632,31 @@
         "Crea un IntValue \"AttackSpeed\" dentro de la Folder \"NPC\" (destino de los clones, ver \"Generador de enemigos\") — no bajo el Model \"Spawner\".",
         "Selecciona el Model \"Demon\" antes de insertar."
       ],
-      "conflictsWith": [],
+      "conflictsWith": [
+        "m2l8-ataque-del-demonio-con-bate"
+      ],
       "notes": "Corrige 2 bugs del material original (findFirstChild minúscula, y el daño de espada conectado al brazo por error). Parte del 'paquete' de combate de M2L8.",
+      "tested": false
+    },
+    {
+      "id": "m2l8-ataque-del-demonio-con-bate",
+      "module": 2,
+      "lesson": 8,
+      "lessonTitle": "Creando un ataque en el juego",
+      "name": "DemonAttack: combate con bate (arma animada)",
+      "description": "Variante de 'DemonAttack' con un bate de béisbol construido por el propio script, que se balancea sin parar y hace daño al tocar al jugador.",
+      "targetParent": "SelectedPart",
+      "scriptInstanceName": "AtaqueDelDemonioConBate",
+      "file": "scripts/m2l8/ataque-del-demonio-con-bate.lua",
+      "requiredObjects": [
+        "El Model \"Demon\" debe tener HumanoidRootPart, RightHand y LeftHand (esqueleto R15). No hace falta la espada \"ClassicSword\": el bate lo construye este mismo script con Parts.",
+        "Crea un IntValue \"AttackSpeed\" dentro de la Folder \"NPC\" (destino de los clones, ver \"Generador de enemigos\") — no bajo el Model \"Spawner\".",
+        "Selecciona el Model \"Demon\" antes de insertar."
+      ],
+      "conflictsWith": [
+        "m2l8-ataque-del-demonio"
+      ],
+      "notes": "Pedido por David (2026-09-26): una variante visual de 'DemonAttack' con un arma que se ve y se mueve, en vez de una espada estática. El bate (mango + cabeza, Parts tipo Cylinder) se reposiciona cada fotograma relativo al HumanoidRootPart en vez de soldarse al hueso de la mano, para no depender de la orientación exacta del rig — ajusta la constante BATE_OFFSET si no queda bien alineado con tu modelo.",
       "tested": false
     },
     {
