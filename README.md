@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.15.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.16.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -125,7 +125,9 @@ end
 
 **v5.15.0 — M3L2 confirmado**: David probó el fix de los muros y aprobó los 3 scripts de M3L2 (`generar-laberinto`, `generar-muros`, `arma-con-objetivo`).
 
-## Próximos pasos (fuera de v5.15.0)
+**v5.16.0 — Módulo 3 completo, confirmado**: David probó M3L3 (leaderboard PvP + pistola en red) con 2 jugadores simulados en Studio y lo aprobó. Con esto, **los 11 scripts catalogados de Módulo 3 quedan `"tested": true`** — Módulos 1, 2 y 3 quedan completos y confirmados de punta a punta.
+
+## Próximos pasos (fuera de v5.16.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.

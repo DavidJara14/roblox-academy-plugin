@@ -1,5 +1,5 @@
 {
-  "version": "5.15.0",
+  "version": "5.16.0",
   "updatedAt": "2026-09-26",
   "scripts": [
     {
@@ -878,7 +878,7 @@
       "requiredObjects": [],
       "conflictsWith": [],
       "notes": "Caso legítimo de ServerScriptService: lógica global de PlayerAdded, no atada a ningún objeto. Depende del valor 'Killer' que registra 'Daño de bala (PvP)'.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l3-pistola-cliente",
@@ -902,7 +902,7 @@
         "m3l2-arma-con-objetivo"
       ],
       "notes": "Reemplaza por completo a 'Arma básica'/'Arma: dañar a un objetivo' (M3L1/M3L2, de un solo jugador). No las uses juntas. Prueba con al menos 2 jugadores simulados en Studio.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l3-crear-bala-servidor",
@@ -920,7 +920,7 @@
       ],
       "conflictsWith": [],
       "notes": "Caso legítimo de ServerScriptService: listener global del RemoteEvent, no atado a ningún objeto. Corrige un bug del original (humo/fuego se creaban en el arma en vez de en la bala, y la bala quedaba anidada en el arma en vez de volar libre). Nota de seguridad: no valida las coordenadas que envía el cliente — aceptable para el nivel del curso.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l3-dano-de-bala-pvp",
@@ -939,7 +939,7 @@
       ],
       "conflictsWith": [],
       "notes": "El nombre del Script debe ser exactamente 'GunDamage' — 'Bala: crear en el servidor' lo busca por ese nombre. Requiere 'Leaderboard PvP' para que el registro de Killer tenga efecto.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m4l1-color-script",
