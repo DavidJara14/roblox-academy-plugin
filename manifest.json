@@ -1,5 +1,5 @@
 {
-  "version": "5.12.0",
+  "version": "5.13.0",
   "updatedAt": "2026-09-26",
   "scripts": [
     {
@@ -763,7 +763,7 @@
       ],
       "conflictsWith": [],
       "notes": "LocalScript: el ladrillo creado solo lo ve el jugador que lo generó, no se replica a otros clientes (diseño de esta lección, no un error).",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l1-magic-wand",
@@ -782,7 +782,7 @@
       ],
       "conflictsWith": [],
       "notes": "Corrige 2 bugs del script original: dependía de una Part llamada exactamente 'Part' (ahora usa 'Handle'), y 'math.random(1.5)' daba error en tiempo de ejecución. Misma limitación de un solo jugador que Brick.",
-      "tested": false
+      "tested": true
     },
     {
       "id": "m3l1-arma-basica",
@@ -803,8 +803,8 @@
         "m3l2-arma-con-objetivo",
         "m3l3-pistola-cliente"
       ],
-      "notes": "Un solo jugador, sin daño. Para dañar un objetivo usa 'Arma: dañar a un objetivo' (M3L2); para multijugador real usa 'Pistola (disparo en red)' (M3L3), que reemplaza esta arquitectura por completo.",
-      "tested": false
+      "notes": "Un solo jugador, sin daño. Para dañar un objetivo usa 'Arma: dañar a un objetivo' (M3L2); para multijugador real usa 'Pistola (disparo en red)' (M3L3), que reemplaza esta arquitectura por completo. Nota de diseño confirmada con David (2026-09-26): el BodyThrust empuja en el eje local +X (lateral) más impulso hacia arriba, no apunta hacia donde mira el jugador — así es como el material original diseñó esta primera versión (demo simple de física, no un arma apuntada). David confirmó que se deja así a propósito; el apuntado real llega en 'Pistola (disparo en red)' de M3L3. No 'corregir' esto sin que él lo pida de nuevo.",
+      "tested": true
     },
     {
       "id": "m3l2-generar-laberinto",

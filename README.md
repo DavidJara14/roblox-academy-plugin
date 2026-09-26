@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.12.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.13.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -119,7 +119,9 @@ end
 
 **v5.12.0 — Módulo 2 completo, confirmado**: David aprobó M2L8 (los 5 scripts del paquete de combate, incluida la variante del bate) y M2L9 (los 5 scripts de logros/leaderboard). Con esto, **los 22 scripts catalogados de Módulo 2 quedan `"tested": true`** — Módulo 2 queda completo y confirmado de punta a punta.
 
-## Próximos pasos (fuera de v5.12.0)
+**v5.13.0 — Módulo 3 en marcha, primer hallazgo aclarado (no era bug)**: David empezó a probar M3 en un proyecto de Studio nuevo y dedicado (recomendado porque el laberinto/muros de M3L2 generan un mapa de ~500x500 studs centrado en el origen, que hubiera arrasado con todo lo de M1/M2). Aprobó `brick` y `magic-wand`. Reportó que "Arma básica" dispara "en la dirección incorrecta" — se confirmó que el `BodyThrust` empuja en el eje local +X (lateral) más impulso hacia arriba, **tal cual el material original** (el reporte de análisis de M3L1 ya documentaba "fuerza que empuja la bala en el eje X") — no apunta hacia donde mira el jugador a propósito, es una demo simple de física antes de introducir apuntado real en M3L3. David confirmó que se deja así. Los 3 scripts de M3L1 quedan `"tested": true`.
+
+## Próximos pasos (fuera de v5.13.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.
