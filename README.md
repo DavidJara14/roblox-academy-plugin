@@ -125,7 +125,7 @@ end
 
 **v5.15.0 — M3L2 confirmado**: David probó el fix de los muros y aprobó los 3 scripts de M3L2 (`generar-laberinto`, `generar-muros`, `arma-con-objetivo`).
 
-**v5.16.0 — Módulo 3 completo, confirmado**: David probó M3L3 (leaderboard PvP + pistola en red) con 2 jugadores simulados en Studio y lo aprobó. Con esto, **los 11 scripts catalogados de Módulo 3 quedan `"tested": true`** — Módulos 1, 2 y 3 quedan completos y confirmados de punta a punta.
+**v5.16.0 — Módulo 3 completo, confirmado**: David probó M3L3 (leaderboard PvP + pistola en red) con 2 jugadores simulados en Studio y lo aprobó. Con esto, **los 10 scripts catalogados de Módulo 3 quedan `"tested": true`** — Módulos 1, 2 y 3 quedan completos y confirmados de punta a punta.
 
 ## Próximos pasos (fuera de v5.16.0)
 
