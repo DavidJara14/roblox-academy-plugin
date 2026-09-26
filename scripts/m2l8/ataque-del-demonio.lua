@@ -5,8 +5,10 @@
 -- CÓMO USARLO:
 -- 1. El Model "Demon" debe tener Parts RightHand/LeftHand (esqueleto
 --    R15) y una espada (ClassicSword) como hijo directo.
--- 2. Crea un IntValue "AttackSpeed" hermano de Field/SpawnPoint (bajo el
---    Model "Spawner").
+-- 2. Crea un IntValue "AttackSpeed" dentro de la Folder "NPC" (donde
+--    generador-de-enemigos.lua clona a los Demon) — el script lo busca
+--    como script.Parent.Parent.AttackSpeed, y en tiempo de ejecución el
+--    padre del Demon clonado es esa Folder, no el Model "Spawner".
 -- 3. Selecciona el Model "Demon" e inserta este script.
 --
 -- Qué hace: al tocar al jugador con las manos o la espada, le quita

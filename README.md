@@ -1,4 +1,4 @@
-# Timeclub Academy — Plugin de Roblox Studio (v5.6.0)
+# Timeclub Academy — Plugin de Roblox Studio (v5.8.0)
 
 Plugin de Roblox Studio para el curso de diseño de videojuegos. Muestra un catálogo de scripts organizados por lección y los inserta en el lugar correcto del proyecto del alumno con un clic.
 
@@ -107,7 +107,11 @@ end
 
 **v5.6.0 — Módulo 1 confirmado**: David probó y aprobó los 19 scripts de Módulo 1 en Roblox Studio. Todos marcados `"tested": true`.
 
-## Próximos pasos (fuera de v5.6.0)
+**v5.7.0 — bug de documentación en M2L8**: `m2l8-perseguir-jugador` y `m2l8-ataque-del-demonio` decían que `WalkSpeed`/`AttackSpeed` van bajo el Model "Spawner", pero el código real los busca como `script.Parent.Parent` del Demon clonado — que en tiempo de ejecución es la Folder **"NPC"** (donde `generador-de-enemigos` los clona), no "Spawner". Corregido en los comentarios y en `requiredObjects`.
+
+**v5.8.0 — dos bugs reales de LocalScript/replicación encontrados probando M2**: (1) `m2l2-revelar-cristal-en-dialogo` leía `Workspace.QuestNPC.Head.Dialog` apenas arrancaba (no dentro de un evento) — como es LocalScript, el contenido de Workspace tarda en replicarse del servidor al cliente, y a veces el script corría antes de tiempo. Solución: `WaitForChild` (caso genuino, no el patrón que se simplificó antes). Mismo fix aplicado a `m4l2-temporizador`, que tenía el mismo problema con `Workspace.Start`/`Workspace.Finish`. (2) `m3l2-arma-con-objetivo` (también LocalScript) clonaba una plantilla de **ServerStorage** — eso nunca puede funcionar, ServerStorage no se replica al cliente bajo ninguna circunstancia, ni con `WaitForChild` (se quedaría esperando para siempre algo que nunca llega). Se reescribió para detectar el daño directamente en el propio LocalScript, sin depender de ServerStorage. La plantilla `m3l2-dano-de-bala` ("dmg") quedó huérfana y se eliminó del catálogo.
+
+## Próximos pasos (fuera de v5.8.0)
 
 - Probar cada script en Roblox Studio y marcarlo `"tested": true` (todo el catálogo, incluidos Módulos 3 a 5, sigue sin confirmación manual).
 - **Conseguir el código completo del sistema de disparo de M5L2/M5L3** (`WeaponHandler`/`WeaponRemote`/`WeaponScript` + botón de disparo móvil) — desde `learn.alg.academy` o un proyecto de referencia armado en Studio — para poder catalogarlo.

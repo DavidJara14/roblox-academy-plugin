@@ -6,8 +6,10 @@
 -- CÓMO USARLO:
 -- 1. En la plantilla "Demon" (en ServerStorage), renombra su Humanoid a
 --    DemonType.
--- 2. Crea un IntValue "WalkSpeed" hermano de Field/SpawnPoint (bajo el
---    Model "Spawner").
+-- 2. Crea un IntValue "WalkSpeed" dentro de la Folder "NPC" (donde
+--    generador-de-enemigos.lua clona a los Demon) — el script lo busca
+--    como script.Parent.Parent.WalkSpeed, y en tiempo de ejecución el
+--    padre del Demon clonado es esa Folder, no el Model "Spawner".
 -- 3. Selecciona el Model "Demon" e inserta este script.
 --
 -- Qué hace: si el jugador está a menos de 50 studs, calcula un camino

@@ -13,11 +13,16 @@
 -- Qué hace: esconde el Crystal al iniciar (lo mueve a ServerStorage) y lo
 -- revela cuando el jugador elige la rama DialogChoice2 > DialogChoice3.
 
-local crystal = game.Workspace.Crystal
+-- WaitForChild aquí sí es necesario: este LocalScript lee estos objetos
+-- de Workspace apenas arranca (no dentro de un evento), y el contenido
+-- de Workspace tarda un instante en replicarse del servidor al
+-- cliente — sin esto, a veces el script corre antes de que QuestNPC/
+-- Head/Dialog hayan terminado de llegar.
+local crystal = game.Workspace:WaitForChild("Crystal")
 crystal.Parent = game.ServerStorage
 
-local npc = game.Workspace.QuestNPC
-local dialog = npc.Head.Dialog
+local npc = game.Workspace:WaitForChild("QuestNPC")
+local dialog = npc:WaitForChild("Head"):WaitForChild("Dialog")
 
 local function onDialogChoiceSelected(player, choice)
 	if choice == dialog.DialogChoice1 then

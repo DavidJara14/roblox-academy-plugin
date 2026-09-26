@@ -19,9 +19,14 @@ local function redondear(n, decimales)
 	return math.floor(n * factor) / factor
 end
 
+-- WaitForChild aquí sí es necesario: este LocalScript lee estos objetos
+-- de Workspace apenas arranca (no dentro de un evento), y el contenido
+-- de Workspace tarda un instante en replicarse del servidor al
+-- cliente — sin esto, a veces el script corre antes de que Start/
+-- Finish hayan terminado de llegar.
 local debounce = true
-local beginRace = game.Workspace.Start.BeginRace
-local endRace = game.Workspace.Finish.EndRace
+local beginRace = game.Workspace:WaitForChild("Start"):WaitForChild("BeginRace")
+local endRace = game.Workspace:WaitForChild("Finish"):WaitForChild("EndRace")
 local textLabel = script.Parent.TextLabel
 
 while true do

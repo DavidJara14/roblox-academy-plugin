@@ -1,6 +1,6 @@
 {
-  "version": "5.6.0",
-  "updatedAt": "2026-09-24",
+  "version": "5.8.0",
+  "updatedAt": "2026-09-26",
   "scripts": [
     {
       "id": "m1l4-checkpoint",
@@ -609,9 +609,9 @@
       "scriptInstanceName": "PerseguirJugador",
       "file": "scripts/m2l8/perseguir-jugador.lua",
       "requiredObjects": [
-        "En la plantilla 'Demon' (ServerStorage), renombra su Humanoid a DemonType.",
-        "Crea un IntValue 'WalkSpeed' hermano de Field/SpawnPoint (bajo el Model 'Spawner').",
-        "Selecciona el Model 'Demon' antes de insertar."
+        "En la plantilla \"Demon\" (ServerStorage), renombra su Humanoid a DemonType.",
+        "Crea un IntValue \"WalkSpeed\" dentro de la Folder \"NPC\" (destino de los clones, ver \"Generador de enemigos\") — no bajo el Model \"Spawner\".",
+        "Selecciona el Model \"Demon\" antes de insertar."
       ],
       "conflictsWith": [],
       "notes": "Parte del 'paquete' de combate de M2L8.",
@@ -628,9 +628,9 @@
       "scriptInstanceName": "AtaqueDelDemonio",
       "file": "scripts/m2l8/ataque-del-demonio.lua",
       "requiredObjects": [
-        "El Model 'Demon' debe tener Parts RightHand/LeftHand (esqueleto R15) y una espada (ClassicSword) como hijo directo.",
-        "Crea un IntValue 'AttackSpeed' hermano de Field/SpawnPoint (bajo el Model 'Spawner').",
-        "Selecciona el Model 'Demon' antes de insertar."
+        "El Model \"Demon\" debe tener Parts RightHand/LeftHand (esqueleto R15) y una espada (ClassicSword) como hijo directo.",
+        "Crea un IntValue \"AttackSpeed\" dentro de la Folder \"NPC\" (destino de los clones, ver \"Generador de enemigos\") — no bajo el Model \"Spawner\".",
+        "Selecciona el Model \"Demon\" antes de insertar."
       ],
       "conflictsWith": [],
       "notes": "Corrige 2 bugs del material original (findFirstChild minúscula, y el daño de espada conectado al brazo por error). Parte del 'paquete' de combate de M2L8.",
@@ -820,46 +820,26 @@
       "tested": false
     },
     {
-      "id": "m3l2-dano-de-bala",
-      "module": 3,
-      "lesson": 2,
-      "lessonTitle": "Creando un mapa para el videojuego de disparos",
-      "name": "dmg: plantilla de daño de bala a un objetivo",
-      "description": "Plantilla deshabilitada que hace 30 de daño a un Humanoid al ser tocada, y se autodestruye. Se clona dentro de cada bala disparada.",
-      "targetParent": "SelectedPart",
-      "scriptInstanceName": "dmg",
-      "startDisabled": true,
-      "file": "scripts/m3l2/dano-de-bala.lua",
-      "requiredObjects": [
-        "En el Explorer, selecciona el servicio 'ServerStorage' e inserta este script directamente ahí (no dentro de una Part).",
-        "Inserta este ANTES que 'Arma: dañar a un objetivo' — se queda deshabilitado como plantilla."
-      ],
-      "conflictsWith": [],
-      "notes": "El nombre del Script debe ser exactamente 'dmg' — 'Arma: dañar a un objetivo' lo busca por ese nombre.",
-      "tested": false
-    },
-    {
       "id": "m3l2-arma-con-objetivo",
       "module": 3,
       "lesson": 2,
       "lessonTitle": "Creando un mapa para el videojuego de disparos",
       "name": "Arma: dañar a un objetivo",
-      "description": "Versión de 'Arma básica' que además clona y habilita 'dmg' en cada bala, para hacer 30 de daño a un Humanoid al impactar.",
+      "description": "Igual que Arma básica, pero detecta cuándo la bala toca a un Humanoid y le hace 30 de daño directamente (sin depender de ServerStorage).",
       "targetParent": "SelectedPart",
       "scriptClassName": "LocalScript",
       "scriptInstanceName": "ArmaConObjetivo",
       "file": "scripts/m3l2/arma-con-objetivo.lua",
       "requiredObjects": [
-        "Construye la Tool 'Weapon' igual que en M3L1 (Handle + Part 'Bomb', WeldConstraint, CanCollide=false).",
-        "Inserta primero 'dmg' (plantilla de daño) en ServerStorage, deshabilitado.",
-        "Añade un NPC al mapa y renómbralo 'Target'.",
-        "Selecciona la Tool 'Weapon' antes de insertar."
+        "Construye la Tool \"Weapon\" igual que en M3L1 (Handle + Part \"Bomb\", WeldConstraint, CanCollide=false).",
+        "Añade un NPC al mapa y renómbralo \"Target\".",
+        "Selecciona la Tool \"Weapon\" antes de insertar."
       ],
       "conflictsWith": [
         "m3l1-arma-basica",
         "m3l3-pistola-cliente"
       ],
-      "notes": "Reemplaza a 'Arma básica' (misma Tool, versión con daño) — no las uses juntas. Para multijugador real usa 'Pistola (disparo en red)' de M3L3.",
+      "notes": "Reemplaza a \"Arma básica\" (misma Tool, versión con daño) — no las uses juntas. Corrige un bug real: la versión original clonaba una plantilla de ServerStorage, imposible desde un LocalScript (ServerStorage nunca es visible para el cliente). Para multijugador real usa \"Pistola (disparo en red)\" de M3L3.",
       "tested": false
     },
     {
